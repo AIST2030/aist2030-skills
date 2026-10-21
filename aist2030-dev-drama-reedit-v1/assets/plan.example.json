@@ -1,0 +1,67 @@
+{
+  "_comment": "短剧二创成片配置模板。改这个文件即可调整成片风格，不用碰代码。",
+
+  "output": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "platform": "douyin"
+  },
+
+  "edl": {
+    "_comment": "切点吸附参数",
+    "search_window": 3.0,
+    "pad": 0.15,
+    "min_silence_len": 0.22,
+    "_note": "search_window=切点在目标点±几秒内找可切间隙；pad=间隙内偏置余量"
+  },
+
+  "dedup": {
+    "_comment": "平台查重对策。2026年抽帧已失效，靠结构+音频+构图。",
+    "level": "standard",
+    "seed": "AIST2030",
+    "_levels": {
+      "off": "不去重（仅测试用）",
+      "light": "轻度调色",
+      "standard": "调色+镜像+微位移（推荐）",
+      "strong": "更激进，适合矩阵号批量"
+    },
+    "_manual_rules": [
+      "单段原素材不超过 8 秒",
+      "一条视频至少拼 5 段不同来源镜头",
+      "音效轨至少替换或重制一条",
+      "文案标题封面全部重写",
+      "⚠ 镜像不要用于含文字/台标的镜头"
+    ]
+  },
+
+  "subtitle": {
+    "font": "Microsoft YaHei",
+    "font_size": 62,
+    "margin_v": 320,
+    "max_units": 15.0,
+    "_note": "margin_v=距底部像素，抖音要避开底部文案区和右侧点赞区；max_units=一行最多视觉宽度单位"
+  },
+
+  "audio": {
+    "bgm_style": "tense",
+    "bgm_db": -22.0,
+    "target_lufs": -16.0,
+    "_styles": {
+      "tense": "紧张（55Hz 根音，低频压迫感）",
+      "epic": "史诗（加八度，更宏大）",
+      "suspense": "悬疑（49Hz，更暗）",
+      "none": "不加 BGM"
+    },
+    "_note": "bgm_db 必须低于 -18，否则盖过人声；短剧原声通常已带 BGM，加 BGM 要轻"
+  },
+
+  "structure": {
+    "_comment": "爆款结构参考（行业共识模板）",
+    "target_duration": 45,
+    "shot_max_len": 3.0,
+    "hook_seconds": 3,
+    "_template": "0-3s 钩子（最强冲突画面+具体悬念文案，禁止'精彩片段'这类烂梗）→ 3-8s 身份对比 → 8-15s 连续打脸 → 15-30s 悬念收尾+引导",
+    "_warn": "钩子文案禁止写片名/剧名/精彩片段/高能来袭"
+  }
+}
