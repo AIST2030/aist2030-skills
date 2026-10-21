@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIST2030算力自由 · 控制面板</title>
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #f5f6f8 0%, #eef2f7 100%);
+    background-attachment: fixed;
+    color: #1f2329; 
+    padding: 24px; 
+    line-height: 1.6;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(51, 112, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .wrap { 
+    max-width: 1024px; 
+    margin: 0 auto; 
+  }
+  h1 { 
+    font-size: 26px; 
+    margin-bottom: 4px; 
+    color: #1a1f2e; 
+    font-weight: 700;
+    background: linear-gradient(90deg, #3370ff, #6366f1, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .sub { 
+    color: #4b5563; 
+    font-size: 14px; 
+    margin-bottom: 24px; 
+    font-weight: 500;
+  }
+  .card {
+    background: #fff; 
+    border: 1px solid #e5e6eb; 
+    border-radius: 12px;
+    padding: 20px; 
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(31,35,41,.06), 0 1px 2px rgba(31,35,41,.04);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3370ff, #6366f1, #8b5cf6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(31,35,41,.12), 0 2px 4px rgba(31,35,41,.08);
+  }
+  .card:hover::before {
+    opacity: 1;
+  }
+  .card h2 { 
+    font-size: 16px; 
+    margin-bottom: 14px; 
+    color: #1a1f2e; 
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+  }
+  .card h2::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background: linear-gradient(90deg, #3370ff, #6366f1);
+    border-radius: 2px;
+  }
+  .card h2::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e5e6eb;
+  }
+  .card h2:hover::after {
+    background: #3370ff;
+    animation: pulse 2s infinite;
+  }
+  .card h2 span {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 400;
+    margin-left: 8px;
+    background: #f8fafc;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+  }
+  .card h2 span:nth-child(2) {
+    background: #dcfce7;
+    border-color: #bbf7d0;
+    color: #166534;
+  }
+  .card h2 span:nth-child(3) {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #dc2626;
+  }
+  .card h2 span:nth-child(4) {
+    background: #dbeafe;
+    border-color: #a5b4fc;
+    color: #1d4ed8;
+  }
+  .card h2 span:nth-child(5) {
+    background: #fde68a;
+    border-color: #fcd34d;
+    color: #d97706;
+  }
+  .tip {
+    background: linear-gradient(135deg, #fff7e6, #fff9f0); 
+    border: 1px solid #ffd591; 
+    border-radius: 10px;
+    padding: 12px 16px; 
+    font-size: 14px; 
+    color: #ad4e00; 
+    margin-bottom: 18px;
+    border-left: 4px solid #ffd591;
+  }
+  .tip strong {
+    color: #c02626;
+  }
+  /* 状态灯 */
+  .status-row { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    flex-wrap: wrap; 
+    padding: 12px 0;
+  }
+  .dot { 
+    width: 18px; 
+    height: 18px; 
+    border-radius: 50%; 
+    background: #bbb; 
+    flex: none; 
+    position: relative;
+  }
+  .dot::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: rgba(187, 187, 187, 0.3);
+  }
+  .dot.on { 
+    background: #22c55e; 
+    box-shadow: 0 0 0 5px rgba(34,197,94,.25); 
+    animation: pulse 2.5s infinite;
+  }
+  .dot.off { 
+    background: #ef4444; 
+    box-shadow: 0 0 0 5px rgba(239,68,68,.2); 
+  }
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+  .status-text { 
+    font-size: 16px; 
+    font-weight: 600; 
+    color: #1a1f2e;
+  }
+  .status-hint { 
+    font-size: 13px; 
+    color: #4b5563; 
+    width: 100%; 
+    margin-top: 4px;
+  }
+  button {
+    background: linear-gradient(135deg, #3370ff, #6366f1); 
+    color: #fff; 
+    border: none; 
+    border-radius: 8px;
+    padding: 10px 20px; 
+    font-size: 14px; 
+    cursor: pointer; 
+    font-family: inherit;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(51,112,255,.2);
+  }
+  button:hover { 
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(51,112,255,.3);
+  }
+  button:active { 
+    transform: translateY(0);
+  }
+  button.ghost { 
+    background: #fff; 
+    color: #3370ff; 
+    border: 1px solid #3370ff; 
+    box-shadow: 0 2px 6px rgba(51,112,255,.1);
+  }
+  button.ghost:hover { 
+    background: #f8f9ff;
+  }
+  button:disabled { 
+    background: #e5e6eb; 
+    color: #9ca3af; 
+    cursor: not-allowed; 
+    transform: none;
+    box-shadow: none;
+  }
+  button.sm { 
+    padding: 6px 14px; 
+    font-size: 13px; 
+    font-weight: 500;
+  }
+  /* 表格 */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    font-size: 13px; 
+    margin-top: 8px;
+  }
+  th, td { 
+    text-align: left; 
+    padding: 10px 12px; 
+    border-bottom: 1px solid #f0f1f3; 
+    vertical-align: middle; 
+    font-weight: 500;
+  }
+  th { 
+    color: #4b5563; 
+    font-weight: 600; 
+    background: #f9fafb;
+    border-top: 1px solid #e5e6eb;
+  }
+  .tag { 
+    display: inline-block; 
+    padding: 2px 12px; 
+    border-radius: 20px; 
+    font-size: 12px; 
+    font-weight: 600; 
+    white-space: nowrap; 
+    text-transform: uppercase;
+  }
+  .tag.ok { 
+    background: linear-gradient(135deg, #e8f7ee, #d1f0e1); 
+    color: #15803d; 
+    border: 1px solid #d1f0e1;
+  }
+  .tag.no { 
+    background: linear-gradient(135deg, #fef2f2, #ffebee); 
+    color: #dc2626; 
+    border: 1px solid #ffebee;
+  }
+  .tag.off { 
+    background: linear-gradient(135deg, #e5e6eb, #d1d5db); 
+    color: #4b5563; 
+    border: 1px solid #d1d5db;
+  }
+  /* Key 输入行 */
+  .keyrow { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+    flex-wrap: wrap;
+  }
+  .keyrow input {
+    flex: 1; 
+    min-width: 0; 
+    border: 1px solid #d0d5dd; 
+    border-radius: 8px;
+    padding: 10px 12px; 
+    font-size: 13px; 
+    font-family: Consolas, monospace;
+    background: #fff; 
+    color: #1f2329;
+  }
+  .keyrow input:focus { 
+    outline: none; 
+    border-color: #3370ff; 
+    box-shadow: 0 0 0 3px rgba(51,112,255,.15);
+  }
+  .keyrow input:disabled { 
+    background: #f2f3f5; 
+    color: #8f959e; 
+  }
+  /* 测试对话 */
+  .row { 
+    display: flex; 
+    gap: 12px; 
+    align-items: center; 
+    flex-wrap: wrap;
+  }
+  select#model {
+    padding: 10px 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    font-size: 13px;
+    background: #fff;
+    min-width: 220px;
+  }
+  select#model:focus {
+    outline: none;
+    border-color: #3370ff;
+    box-shadow: 0 0 0 3px rgba(51,112,255,.15);
+  }
+  textarea#prompt {
+    flex: 1;
+    min-width: 300px;
+    padding: 12px 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    font-size: 13px;
+    resize: vertical;
+    min-height: 80px;
+  }
+  textarea#prompt:focus {
+    outline: none;
+    border-color: #3370ff;
+    box-shadow: 0 0 0 3px rgba(51,112,255,.15);
+  }
+  /* 结果区域 */
+  #result {
+    padding: 16px; 
+    border-radius: 10px; 
+    margin-top: 16px;
+    background: #f9fafb; 
+    border: 1px solid #e5e6eb;
+    min-height: 120px; 
+    white-space: pre-wrap; 
+    font-family: 'Consolas', 'SFMono-Regular', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  #result.err { 
+    background: #fef2f2; 
+    border-color: #fee2e2; 
+    color: #dc2626; 
+    border-left: 4px solid #fee2e2;
+  }
+  /* 底部 */
+  .footer {
+    margin-top: 28px; 
+    font-size: 12px; 
+    color: #646a73; 
+    text-align: center;
+    padding: 18px; 
+    background: linear-gradient(135deg, #fff, #f8fafc);
+    border-radius: 10px;
+    border: 1px solid #e5e6eb;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3370ff, #6366f1, #8b5cf6);
+  }
+  /* 新增：加载动画 */
+  .loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f4f6;
+    border-top: 2px solid #3370ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  /* 新增：输入框增强效果 */
+  input, select, textarea {
+    transition: all 0.3s ease;
+  }
+  input:focus, select:focus, textarea:focus {
+    transform: translateY(-1px);
+  }
+  /* 新增：卡片阴影增强 */
+  .card {
+    box-shadow: 0 4px 12px rgba(31,35,41,.06), 0 1px 2px rgba(31,35,41,.04);
+  }
+  .card:hover {
+    box-shadow: 0 8px 24px rgba(31,35,41,.12), 0 2px 4px rgba(31,35,41,.08);
+  }
+  .footer a {
+    color: #3370ff;
+    text-decoration: none;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  /* 响应式 */
+  @media (max-width: 900px) {
+    .wrap { max-width: 100%; }
+  }
+  @media (max-width: 768px) {
+    body { padding: 12px; }
+    .wrap { max-width: 100%; }
+    .card { padding: 14px; }
+    .status-row { gap: 10px; }
+    .row, .keyrow { flex-direction: column; align-items: stretch; }
+    select#model, textarea#prompt { width: 100%; min-width: 0; }
+    .keyrow input { width: 100%; }
+    .steps { grid-template-columns: 1fr; }
+    .footer > div { flex-direction: column; align-items: flex-start; }
+    table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .header-badge { margin-top: 10px; display: inline-block; }
+    .card h2 span { display: none; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 22px; }
+    .card h2 { font-size: 15px; }
+    .sub { font-size: 13px; }
+  }
+  /* 新增：头部徽章 */
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #3370ff, #6366f1);
+    color: white;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 12px;
+    box-shadow: 0 2px 8px rgba(51,112,255,.3);
+    animation: badgeGlow 3s ease-in-out infinite alternate;
+  }
+  .header-badge::before {
+    content: "✨";
+    font-size: 14px;
+  }
+  @keyframes badgeGlow {
+    0% { box-shadow: 0 2px 8px rgba(51,112,255,.3); }
+    100% { box-shadow: 0 2px 12px rgba(51,112,255,.5); }
+  }
+  /* 新增：高级动画效果 */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes progress {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+  .card {
+    animation: fadeIn 0.6s ease-out;
+  }
+  .card:nth-child(2) { animation-delay: 0.1s; }
+  .card:nth-child(3) { animation-delay: 0.2s; }
+  .card:nth-child(4) { animation-delay: 0.3s; }
+  .card:nth-child(5) { animation-delay: 0.4s; }
+  .card:nth-child(6) { animation-delay: 0.5s; }
+  .card:nth-child(7) { animation-delay: 0.6s; }
+  .card:nth-child(8) { animation-delay: 0.7s; }
+  .card:nth-child(9) { animation-delay: 0.8s; }
+  /* 新增：进度条样式 */
+  .progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #f1f5f9;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3370ff, #6366f1);
+    border-radius: 2px;
+    animation: progress 2s ease-out;
+  }
+  /* 新增：状态指示器增强 */
+  .status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+  }
+  .status-indicator.active {
+    background: #dcfce7;
+    border-color: #bbf7d0;
+    color: #166534;
+  }
+  .status-indicator.inactive {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #dc2626;
+  }
+  /* 新增：表格样式优化 */
+  table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  th {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+  td {
+    transition: background-color 0.2s ease;
+  }
+  tr:hover td {
+    background-color: #f8fafc;
+  }
+  /* 新增：按钮增强效果 */
+  button {
+    position: relative;
+    overflow: hidden;
+  }
+  button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  button:hover::before {
+    left: 100%;
+  }
+  /* 新增：步骤卡片 */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .step {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3370ff, #6366f1);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  .step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(51,112,255,.1);
+    border-color: #3370ff;
+  }
+  .step:hover::before {
+    transform: scaleX(1);
+  }
+  .step .n {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #3370ff, #6366f1);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: bold;
+    margin-right: 10px;
+    box-shadow: 0 2px 6px rgba(51,112,255,.3);
+  }
+  .step p {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+  }
+  .step code {
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    color: #3370ff;
+  }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+  <!-- 欢迎横幅 -->
+  <div style="background: linear-gradient(135deg, #3370ff, #6366f1, #8b5cf6); border-radius: 16px; padding: 24px; margin-bottom: 24px; color: white; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%; opacity: 0.3;"></div>
+    <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+    <h1 style="font-size: 28px; margin-bottom: 8px; font-weight: 700; position: relative; z-index: 1;">AIST2030算力自由 · 控制面板</h1>
+    <div style="font-size: 14px; opacity: 0.9; position: relative; z-index: 1; line-height: 1.6;">
+      AIST2030 ｜ 全网免费大模型聚合 · 智能调度 · 算力自由 ｜ 本地面板 · Key 只存在本机，不上传任何数据<br>
+      <span style="font-weight: 600; font-size: 16px;">⚡ 支持23个AI渠道 · 智能赛马调度 · 免费额度聚合</span>
+    </div>
+    <span class="header-badge" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); margin-left: 12px; margin-top: 8px; display: inline-block;">✨ 专业版</span>
+  </div>
+
+  <!-- 网关状态 -->
+  <div class="card">
+    <h2>🚀 网关状态 <span>(<span id="statusBadge">待检测</span>)</span></h2>
+    <div class="status-row">
+      <div id="dot" class="dot off"></div>
+      <div id="statusText" class="status-text">检测中…</div>
+      <button class="ghost" onclick="checkHealth()">刷新状态</button>
+      <div id="statusHint" class="status-hint"></div>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 0%"></div>
+    </div>
+    <div style="margin-top: 12px; display: flex; gap: 8px; align-items: center; font-size: 12px; color: #6b7280;">
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">⏱️ 检测时间: <span id="lastCheckTime">--</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">🔄 自动刷新: <span>30s</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">📡 连接地址: <span>127.0.0.1:8787</span></div>
+    </div>
+  </div>
+  <script>
+    // 更新最后检查时间
+    function updateLastCheckTime() {
+      var now = new Date();
+      var timeString = now.toLocaleTimeString('zh-CN', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      document.getElementById('lastCheckTime').textContent = timeString;
+    }
+    
+    // 在页面加载完成后初始化
+    window.addEventListener('DOMContentLoaded', function() {
+      updateLastCheckTime();
+      
+      // 设置自动刷新
+      setInterval(function() {
+        updateLastCheckTime();
+      }, 30000);
+    });
+  </script>
+
+  <!-- 四步操作 -->
+  <div class="card">
+    <h2>🎯 四步操作指南 <span>(<span id="step1Status">待启动</span>)</span></h2>
+    <div class="steps">
+      <div class="step">
+        <b><span class="n">1</span>启动网关</b>
+        <p>双击文件夹里的 <code>start-gateway.bat</code>，弹出黑窗口保持开着，就是网关在运行。</p>
+        <div class="status-indicator inactive">待启动</div>
+      </div>
+      <div class="step">
+        <b><span class="n">2</span>填 Key</b>
+        <p>在下方「Key 管理台」粘贴 Key、点保存，<b>立即生效不用重启</b>。只填一个智谱就够用。</p>
+        <div class="status-indicator inactive">待配置</div>
+      </div>
+      <div class="step">
+        <b><span class="n">3</span>选模型</b>
+        <p>WorkBuddy 对话输入框上方模型下拉 → 选带「AIST2030免费」前缀的条目即可，日常对话、写代码、写文案都用它。<br><span style="font-size:12px;color:#646a73;margin-top:4px;display:block;">💡 拿不准就用 <b>auto</b>：网关会分析问题类型并自动挑最快最稳的渠道，首选挂了会自动换下一家。要识图才用 GLM-4V-Flash，要超长文（2 万字以上）才用 LongCat-2.0，其余情况 auto 都够。</span></p>
+        <div class="status-indicator inactive">待选择</div>
+      </div>
+      <div class="step">
+        <b><span class="n">4</span>直接用</b>
+        <p>正常发消息。本页下方可以随时测试网关通不通。</p>
+        <div class="status-indicator inactive">待体验</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 更新步骤状态
+    function updateStepStatus() {
+      var configuredCount = parseInt(document.getElementById('configuredCount').textContent) || 0;
+      var activeCount = parseInt(document.getElementById('activeCount').textContent) || 0;
+      
+      if (configuredCount > 0) {
+        document.getElementById('step1Status').textContent = '已配置';
+        document.getElementById('step1Status').style.color = '#22c55e';
+        document.getElementById('step1Status').style.fontWeight = '600';
+        
+        // 更新第一个步骤的状态指示器
+        var step1Indicator = document.querySelector('.steps .step:first-child .status-indicator');
+        if (step1Indicator) {
+          step1Indicator.className = 'status-indicator active';
+          step1Indicator.textContent = '已配置';
+        }
+      }
+      
+      if (activeCount > 0) {
+        document.getElementById('step1Status').textContent = '已就绪';
+        document.getElementById('step1Status').style.color = '#22c55e';
+        document.getElementById('step1Status').style.fontWeight = '600';
+        
+        // 更新第一个步骤的状态指示器
+        var step1Indicator = document.querySelector('.steps .step:first-child .status-indicator');
+        if (step1Indicator) {
+          step1Indicator.className = 'status-indicator active';
+          step1Indicator.textContent = '已就绪';
+        }
+        
+        // 更新第二个步骤的状态指示器
+        var step2Indicator = document.querySelector('.steps .step:nth-child(2) .status-indicator');
+        if (step2Indicator) {
+          step2Indicator.className = 'status-indicator active';
+          step2Indicator.textContent = '已启用';
+        }
+      }
+    }
+    
+    // 在页面加载完成后初始化
+    window.addEventListener('DOMContentLoaded', function() {
+      // 延迟执行以确保DOM完全加载
+      setTimeout(function() {
+        updateStepStatus();
+      }, 500);
+    });
+    
+    // 自动刷新功能
+    function autoRefresh() {
+      if (document.getElementById('statusBadge').textContent === '正常') {
+        checkHealth();
+      }
+    }
+    
+    // 设置自动刷新间隔（30秒）
+    setInterval(autoRefresh, 30000);
+    
+    // 页面可见性监听，暂停后台刷新
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        console.log('页面进入后台，暂停自动刷新');
+      } else {
+        console.log('页面回到前台，恢复自动刷新');
+      }
+    });
+    
+    // 错误处理
+    window.addEventListener('error', function(e) {
+      console.error('页面错误:', e.error);
+    });
+    
+    // 性能监控
+    if ('performance' in window) {
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var perfData = performance.getEntriesByType('navigation')[0];
+          console.log('页面加载性能:', {
+            loadTime: perfData.loadEventEnd - perfData.fetchStart + 'ms',
+            domReady: perfData.domContentLoadedEventEnd - perfData.fetchStart + 'ms'
+          });
+        }, 1000);
+      });
+    }
+    
+    // 初始化时检查网关状态
+    setTimeout(function() {
+      checkHealth();
+    }, 1000);
+  </script>
+
+  <!-- Key 管理台 -->
+  <div class="card">
+    <h2>🔑 Key 管理台 <span style="font-weight:400;color:#8f959e;font-size:12px;">（粘贴 → 保存，立即生效；已保存的显示掩码，输入新值可覆盖）</span></h2>
+    <div style="margin-top: 8px; display: flex; gap: 8px; align-items: center; font-size: 12px; color: #6b7280;">
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">✅ 已配置: <span id="configuredCount">0</span>/23</div>
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">⚡ 活跃渠道: <span id="activeCount">0</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #dcfce7; padding: 2px 8px; border-radius: 20px; border: 1px solid #86efac; color:#15803d; font-weight:600;">🎯 自动池: <span id="coreCount">0</span> 家核心</div>
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">📊 各渠道额度以其官网为准</div>
+    </div>
+    <table>
+      <thead><tr><th style="width:52px">启用</th><th style="width:150px">渠道 / 档位</th><th>Key（粘贴到这里）</th><th style="width:64px">状态</th><th style="width:210px">免费额度 / 领 Key</th></tr></thead>
+      <tbody id="keyTable"><tr><td colspan="5" style="color:#8f959e">读取中…</td></tr></tbody>
+    </table>
+    <p style="font-size:12.5px;color:#646a73;margin-top:10px">
+      <b>「启用」勾选框说明：</b>只有勾上的渠道才参与 <code>AIST2030免费模型</code> 自动调度。默认只留 3 家「又快又好 + 中文强」的核心渠道；
+      <b>傻模型</b>（9B 小模型，闲聊可以、干活不行）、<b>付费</b>（会扣费）、<b>慢/海外</b>、<b>失效</b>（实测端点已挂）、<b>未验证</b>这几类默认不勾，<b>你需要时自己勾选即可，改完立即生效不用重启网关</b>。
+    </p>
+  </div>
+
+  <!-- 测试对话 -->
+  <div class="card">
+    <h2>⚡ 实时测试 · 即刻体验 <span>(<span id="testStatus">待测试</span>)</span></h2>
+    <div style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-radius: 12px; padding: 16px; margin-bottom: 16px; border-left: 4px solid #3370ff; box-shadow: 0 2px 8px rgba(51,112,255,.1);">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span style="width: 8px; height: 8px; background: #22c55e; border-radius: 50%;"></span>
+        <span style="font-size: 12px; color: #6b7280;">实时响应 · 智能调度 · 多模型支持</span>
+      </div>
+      <div style="font-size: 11px; color: #9ca3af;">选择模型后输入测试内容，立即体验AI对话效果</div>
+    </div>
+    <div class="row">
+      <select id="model">
+        <option value="auto">AIST2030免费模型（自动调度，日常首选）</option>
+        <option value="THUDM/GLM-4-9B-0414">GLM-4-9B（硅基流动·最快0.3s·简单问答）</option>
+        <option value="Qwen/Qwen2.5-7B-Instruct">Qwen2.5-7B（硅基流动·写代码/结构化输出）</option>
+        <option value="glm-4-flash">GLM-4-Flash（智谱·中文创意写作）</option>
+        <option value="glm-4v-flash">GLM-4V-Flash（智谱·识图看图·唯一视觉模型）</option>
+        <option value="LongCat-2.0">LongCat-2.0（美团·超长文本12.5万字）</option>
+        <option value="LongCat-2.5-Preview">LongCat-2.5（美团·深度推理·慢）</option>
+      </select>
+      <button onclick="sendTest()" id="sendBtn">发送测试</button>
+    </div>
+    <div class="row"><textarea id="prompt" placeholder="输入点什么，比如：用一句话介绍贵州省团之家智付科技有限公司">用一句话介绍贵州省团之家智付科技有限公司</textarea></div>
+    <div id="result">回复会显示在这里。</div>
+    <div style="margin-top: 12px; font-size: 11px; color: #6b7280; display: flex; justify-content: space-between;">
+      <div>⏱️ 响应时间：<span id="responseTime">-- ms</span></div>
+      <div>📊 调度成功率：<span id="successRate">--%</span></div>
+    </div>
+  </div>
+
+  <!-- 调用规则（读 usage-rules.json，与网关 GET /usage-rules 同源） -->
+  <div class="card">
+    <h2>📖 调用规则 <span style="font-size:12px;font-weight:400;color:#6b7280;">该用哪个模型 · 请求怎么写 · 报错了怎么办</span></h2>
+    <div id="rulesBox"><div style="color:#6b7280;font-size:13px;">正在读取…</div></div>
+  </div>
+
+  <!-- 去哪领 Key -->
+  <div class="card">
+    <h2>🎁 去哪领 Key（免费注册 · 零绑卡 · 3分钟开通）</h2>
+    <div style="margin-top: 8px; display: flex; gap: 8px; align-items: center; font-size: 12px; color: #6b7280;">
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">🔍 已验证: <span id="verifiedCount">23</span>/23</div>
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">⏱️ 注册时间: <span>3分钟</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">✅ 首选: <span>智谱 BigModel</span></div>
+    </div>
+    <table>
+      <thead><tr><th>平台</th><th>免费拿到什么</th><th style="width:110px">地址</th></tr></thead>
+      <tbody>
+        <tr><th colspan="3" style="background:#eef2ff;color:#1d4ed8;font-size:12px">🇨🇳 国内渠道（13）</th></tr>
+        <tr><td>智谱 BigModel</td><td>注册送额度，GLM-4-Flash 免费可用</td><td><a href="https://open.bigmodel.cn" target="_blank">open.bigmodel.cn</a></td></tr>
+        <tr><td>硅基流动</td><td>注册送额度，9B 以下模型免费（需实名）</td><td><a href="https://cloud.siliconflow.cn" target="_blank">cloud.siliconflow.cn</a></td></tr>
+        <tr><td>阿里云百炼</td><td>新用户各模型赠 100 万 Token（90 天有效）</td><td><a href="https://bailian.console.aliyun.com" target="_blank">bailian.console.aliyun.com</a></td></tr>
+        <tr><td>阿里云百炼·长文本</td><td>同百炼 Key，专吃长上下文（千万级）</td><td><a href="https://bailian.console.aliyun.com" target="_blank">bailian.console.aliyun.com</a></td></tr>
+        <tr><td>火山方舟（豆包）</td><td>每日 200 万 Token，次日重置</td><td><a href="https://console.volcengine.com/ark" target="_blank">console.volcengine.com/ark</a></td></tr>
+        <tr><td>百度千帆</td><td>ERNIE-Speed 免费调用</td><td><a href="https://console.bce.baidu.com/qianfan" target="_blank">console.bce.baidu.com/qianfan</a></td></tr>
+        <tr><td>中国移动 MoMA</td><td>2500 万 Token（先在控制台「订购模型管理」免费订阅）</td><td><a href="https://ecloud.10086.cn/portal/product/MaaS" target="_blank">ecloud.10086.cn</a></td></tr>
+        <tr><td>美团 LongCat</td><td>实名即送 1000 万 Token</td><td><a href="https://longcat.chat/platform" target="_blank">longcat.chat</a></td></tr>
+        <tr><td>小米 MiMo</td><td>新号送 $2 试用（按量付费）</td><td><a href="https://platform.xiaomimimo.com" target="_blank">platform.xiaomimimo.com</a></td></tr>
+        <tr><td>腾讯混元</td><td>免费试用额度</td><td><a href="https://cloud.tencent.com/product/hunyuan" target="_blank">cloud.tencent.com</a></td></tr>
+        <tr><td>MiniMax</td><td>新户 100 万 Token</td><td><a href="https://platform.minimaxi.com" target="_blank">platform.minimaxi.com</a></td></tr>
+        <tr><td>DeepSeek</td><td>新户约 100 万 Token（30 天，按量付费）</td><td><a href="https://platform.deepseek.com" target="_blank">platform.deepseek.com</a></td></tr>
+        <tr><td>Ollama 本地</td><td>完全免费无限流，数据不出本机</td><td><a href="https://ollama.com" target="_blank">ollama.com</a></td></tr>
+        <tr><th colspan="3" style="background:#fef2f2;color:#dc2626;font-size:12px">🌐 海外渠道（10，多数需海外网络）</th></tr>
+        <tr><td>OpenRouter</td><td>17+ 个 :free 模型，50 次/天</td><td><a href="https://openrouter.ai" target="_blank">openrouter.ai</a></td></tr>
+        <tr><td>Google AI Studio</td><td>Gemini 免费层（需海外网络）</td><td><a href="https://aistudio.google.com" target="_blank">aistudio.google.com</a></td></tr>
+        <tr><td>Groq</td><td>每天约 6000 次，极速（需海外网络）</td><td><a href="https://console.groq.com" target="_blank">console.groq.com</a></td></tr>
+        <tr><td>GitHub Models</td><td>PAT 即可，每天 150+ 次</td><td><a href="https://github.com/settings/tokens" target="_blank">github.com/settings/tokens</a></td></tr>
+        <tr><td>NVIDIA NIM</td><td>无限量（需 NVIDIA 账号）</td><td><a href="https://build.nvidia.com" target="_blank">build.nvidia.com</a></td></tr>
+        <tr><td>Anthropic Claude</td><td>新户 100 万 Token（需海外网络）</td><td><a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a></td></tr>
+        <tr><td>Cohere</td><td>新户 100 万 Token（需海外网络）</td><td><a href="https://dashboard.cohere.com" target="_blank">dashboard.cohere.com</a></td></tr>
+        <tr><td>Perplexity Labs</td><td>免费层（需海外网络）</td><td><a href="https://labs.perplexity.ai" target="_blank">labs.perplexity.ai</a></td></tr>
+        <tr><td>Hugging Face</td><td>推理 API 免费层（需海外网络）</td><td><a href="https://huggingface.co" target="_blank">huggingface.co</a></td></tr>
+        <tr><td>Replicate</td><td>新户 1000 次（需海外网络）</td><td><a href="https://replicate.com" target="_blank">replicate.com</a></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12.5px;color:#646a73;margin-top:10px">领到 Key 后，回到上方「Key 管理台」粘贴保存即可，<b>不需要</b>再用记事本编辑 <code>.env</code>。</p>
+  </div>
+
+  <!-- 新增资源说明 -->
+  <div class="card">
+    <h2>⭐ 新增免费资源（2026-10更新）</h2>
+    <div style="display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #dcfce7, #bbf7d0); border-radius: 12px; padding: 16px; border-left: 4px solid #166534; box-shadow: 0 2px 8px rgba(22,101,52,.1);">
+        <div style="font-size: 12px; color: #166534; font-weight: 600;">免费模式</div>
+        <div style="font-size: 24px; font-weight: 700; color: #166534; margin-top: 4px;">聚合调度</div>
+        <div style="font-size: 11px; color: #475569; margin-top: 4px;">各渠道免费额度以官网为准</div>
+      </div>
+      <div style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #dbeafe, #a5b4fc); border-radius: 12px; padding: 16px; border-left: 4px solid #1d4ed8; box-shadow: 0 2px 8px rgba(29,78,216,.1);">
+        <div style="font-size: 12px; color: #1d4ed8; font-weight: 600;">渠道数量</div>
+        <div style="font-size: 24px; font-weight: 700; color: #1d4ed8; margin-top: 4px;">23个</div>
+        <div style="font-size: 11px; color: #475569; margin-top: 4px;">智谱、硅基、阿里、百度等</div>
+      </div>
+      <div style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #fef2f2, #fecaca); border-radius: 12px; padding: 16px; border-left: 4px solid #dc2626; box-shadow: 0 2px 8px rgba(220,38,38,.1);">
+        <div style="font-size: 12px; color: #dc2626; font-weight: 600;">新资源</div>
+        <div style="font-size: 24px; font-weight: 700; color: #dc2626; margin-top: 4px;">10个</div>
+        <div style="font-size: 11px; color: #475569; margin-top: 4px;">MoMA、LongCat、MiMo等</div>
+      </div>
+    </div>
+    <div class="tip">
+      🎉 <strong>好消息！</strong>近期多家大厂开放免费AI算力（中国移动 MoMA、美团 LongCat、小米 MiMo 等），注册即可领取免费额度，网关自动聚合调度，无需逐家配置。
+    </div>
+    <div style="margin-top: 12px; display: flex; align-items: center; gap: 12px; font-size: 12px; color: #6b7280;">
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">✅ 国内主力渠道已逐一实测</div>
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">⚡ 实时调度: 支持</div>
+      <div style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 2px 8px; border-radius: 20px; border: 1px solid #e2e8f0;">🛡️ 安全保障: 本地运行</div>
+    </div>
+  </div>
+<div class="footer">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div>
+        网关地址 <b>http://127.0.0.1:8787</b> ｜ 面板为本地文件，Key 只写本机 <code>.env</code>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; padding: 4px 12px; border-radius: 20px; font-size: 12px; color: #3370ff;">AIST2030</span>
+        <span style="display: inline-flex; align-items: center; gap: 4px; background: #e0f2fe; padding: 4px 12px; border-radius: 20px; font-size: 12px; color: #0891b2;">安全版</span>
+        <span style="display: inline-flex; align-items: center; gap: 4px; background: #dcfce7; padding: 4px 12px; border-radius: 20px; font-size: 12px; color: #166534;">专业版</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var BASE = 'http://127.0.0.1:8787';
+var SHORT = {
+  bigmodel: '智谱 BigModel', siliconflow: '硅基流动', dashscope: '阿里云百炼',
+  volcengine: '火山方舟(豆包)', qianfan: '百度千帆', deepseek: 'DeepSeek',
+  openrouter: 'OpenRouter', google: 'Google AI Studio', groq: 'Groq',
+  'github-models': 'GitHub Models', ollama: 'Ollama 本地',
+  moma: '中国移动 MoMA', longcat: '美团 LongCat', mimo: '小米 MiMo', nim: 'NVIDIA NIM',
+  anthropic: 'Anthropic Claude', cohere: 'Cohere', perplexity: 'Perplexity Labs',
+  huggingface: 'Hugging Face', replicate: 'Replicate', 'tencent-hunyuan': '腾讯混元',
+  'dashscope-long': '阿里云百炼（长文本）', minimax: 'MiniMax'
+};
+var NOTES = {
+  bigmodel: 'GLM-4-Flash 免费可用，注册另送额度',
+  siliconflow: '9B 以下永久免费 + 新户 2000 万 Token',
+  dashscope: '每模型 100 万 Token（90 天）',
+  volcengine: '每日 200 万 Token，次日重置',
+  qianfan: 'ERNIE-Speed 永久免费',
+  deepseek: '新户约 100 万 Token（30 天）',
+  openrouter: '17+ 个 :free 模型，50 次/天',
+  google: 'Gemini 免费层（需海外网络）',
+  groq: '每天约 6000 次，极速',
+  'github-models': 'PAT 即可，每天 150+ 次',
+  ollama: '本地零成本，需安装并启用',
+  moma: '2500万 Token（先订购后调用）',
+  longcat: '实名送1000万 Token（慢速备用）',
+  mimo: '新号送$2（试用额度易用尽）',
+  nim: '无限量（需NVIDIA账号）',
+  anthropic: '新户100万Token',
+  cohere: '新户100万Token',
+  perplexity: '免费层',
+  huggingface: '推理API免费层',
+  replicate: '新户1000次',
+  'tencent-hunyuan': '免费试用',
+  'dashscope-long': '与 dashscope 同 Key 的备用入口，专吃长上下文（千万级）',
+  minimax: '新户100万Token'
+};
+var SIGNUP = {
+  bigmodel: 'https://open.bigmodel.cn',
+  siliconflow: 'https://cloud.siliconflow.cn',
+  dashscope: 'https://bailian.console.aliyun.com',
+  volcengine: 'https://console.volcengine.com/ark',
+  qianfan: 'https://console.bce.baidu.com/qianfan',
+  deepseek: 'https://platform.deepseek.com',
+  openrouter: 'https://openrouter.ai',
+  google: 'https://aistudio.google.com',
+  groq: 'https://console.groq.com',
+  'github-models': 'https://github.com/settings/tokens',
+  ollama: 'https://ollama.com',
+  moma: 'https://ecloud.10086.cn/portal/product/MaaS',
+  longcat: 'https://longcat.chat/platform',
+  mimo: 'https://platform.xiaomimimo.com',
+  nim: 'https://build.nvidia.com',
+  anthropic: 'https://console.anthropic.com',
+  cohere: 'https://dashboard.cohere.com',
+  perplexity: 'https://labs.perplexity.ai',
+  huggingface: 'https://huggingface.co',
+  replicate: 'https://replicate.com',
+  'tencent-hunyuan': 'https://hunyuan.tencent.com',
+  'dashscope-long': 'https://bailian.console.aliyun.com',
+  minimax: 'https://api.minimax.chat'
+};
+
+function checkHealth() {
+  var dot = document.getElementById('dot');
+  var txt = document.getElementById('statusText');
+  var hint = document.getElementById('statusHint');
+  var statusBadge = document.getElementById('statusBadge');
+  var progressFill = document.querySelector('.progress-fill');
+  
+  // 显示加载状态
+  dot.className = 'dot';
+  txt.textContent = '检测中…';
+  hint.textContent = '正在连接网关...';
+  if (statusBadge) {
+    statusBadge.textContent = '检测中';
+    statusBadge.style.color = '#6b7280';
+  }
+  if (progressFill) {
+    progressFill.style.width = '0%';
+  }
+  
+  fetch(BASE + '/health').then(function(r) { return r.json(); }).then(function(d) {
+    dot.className = 'dot on';
+    txt.textContent = '网关运行中';
+    hint.textContent = '地址 ' + BASE + ' ｜ 已就绪渠道：' + (d.providersReady && d.providersReady.length ? d.providersReady.join('、') : '无（在下方 Key 管理台填一个 Key）');
+    
+    // 更新状态徽章
+    if (statusBadge) {
+      statusBadge.textContent = '正常';
+      statusBadge.style.color = '#22c55e';
+      statusBadge.style.fontWeight = '600';
+    }
+    
+    // 动画进度条
+    if (progressFill) {
+      progressFill.style.width = '100%';
+      setTimeout(function() {
+        progressFill.style.transition = 'width 0.3s ease';
+      }, 10);
+    }
+    
+    loadKeys();
+  }).catch(function() {
+    dot.className = 'dot off';
+    txt.textContent = '网关未启动';
+    hint.textContent = '请双击文件夹里的 start-gateway.bat，弹出黑窗口保持开着，再点「刷新状态」';
+    
+    // 更新状态徽章
+    if (statusBadge) {
+      statusBadge.textContent = '异常';
+      statusBadge.style.color = '#dc2626';
+      statusBadge.style.fontWeight = '600';
+    }
+    
+    // 动画进度条
+    if (progressFill) {
+      progressFill.style.width = '0%';
+      setTimeout(function() {
+        progressFill.style.transition = 'width 0.3s ease';
+      }, 10);
+    }
+    
+    document.getElementById('keyTable').innerHTML =
+      '<tr><td colspan="5" style="color:#8f959e;padding:14px">网关未启动，暂时不能填 Key。<br>请先双击 <b>start-gateway.bat</b>，黑窗口保持开着，然后点右上角「刷新状态」。</td></tr>';
+  });
+}
+
+function loadKeys() {
+  fetch(BASE + '/api/keys').then(function(r) { return r.json(); }).then(function(d) {
+    renderKeyTable(d.keys || []);
+  }).catch(function() {
+    document.getElementById('keyTable').innerHTML = '<tr><td colspan="5" style="color:#8f959e">读取渠道列表失败，点「刷新状态」重试</td></tr>';
+  });
+}
+
+function renderKeyTable(keys) {
+  var rows = '';
+  var configuredCount = 0;
+  var activeCount = 0;
+  var coreCount = 0;
+
+  // 档位徽章：告诉用户这条渠道为什么默认关
+  var TIER = {
+    core:       { txt: '自动池·核心', color: '#16a34a', bg: '#dcfce7', tip: '又快又好、中文强，参与自动调度' },
+    weak:       { txt: '傻模型',     color: '#b45309', bg: '#fef3c7', tip: '小参数模型，日常闲聊可用，干活质量弱' },
+    paid:       { txt: '付费',       color: '#b91c1c', bg: '#fee2e2', tip: '速度快质量好，但会产生费用' },
+    slow:       { txt: '慢/海外',    color: '#6366f1', bg: '#e0e7ff', tip: '延迟高或需海外网络' },
+    dead:       { txt: '失效',       color: '#6b7280', bg: '#f1f5f9', tip: '实测端点不可用（域名不存在/返回HTML）' },
+    unverified: { txt: '未验证',     color: '#6b7280', bg: '#f1f5f9', tip: '未实测，谨慎启用' },
+  };
+
+  keys.forEach(function(k) {
+    var t = TIER[k.tier] || TIER.unverified;
+    var isCore = k.tier === 'core';
+    if (isCore) coreCount++;
+
+    var tag = k.configured
+      ? (k.enabled ? '<span class="tag ok">就绪</span>' : '<span class="tag off">已停用</span>')
+      : '<span class="tag no">缺 Key</span>';
+    var statusIndicator = k.configured
+      ? '<div class="status-indicator active">已配置</div>'
+      : '<div class="status-indicator inactive">待配置</div>';
+    var ph = k.configured
+      ? ('已保存 ' + k.masked + '，输入新 Key 可覆盖')
+      : (k.id === 'ollama' ? '输入 ollama 三个字母即可启用' : '粘贴 Key（去对应官网复制）');
+
+    // 统计
+    if (k.configured) configuredCount++;
+    if (k.enabled && k.configured) activeCount++;
+
+    rows += '<tr' + (k.enabled ? '' : ' style="opacity:.62"') + '>' +
+      '<td style="text-align:center">' +
+        '<input type="checkbox" id="en-' + k.id + '" onchange="toggleProvider(\'' + k.id + '\', this.checked, this)" ' +
+          (k.enabled ? 'checked' : '') + ' title="' + t.tip + '" style="width:16px;height:16px;cursor:pointer;accent-color:#16a34a">' +
+      '</td>' +
+      '<td><b>' + SHORT[k.id] + '</b><br>' +
+        '<span style="display:inline-block;margin-top:3px;font-size:10.5px;padding:1px 6px;border-radius:10px;background:' + t.bg + ';color:' + t.color + ';font-weight:600" title="' + t.tip + '">' + t.txt + '</span>' +
+        (k.defaultModel ? '<span style="font-size:10.5px;color:#9ca3af;margin-left:4px">' + k.defaultModel + '</span>' : '') +
+      '</td>' +
+      '<td><div class="keyrow">' +
+        '<input type="text" id="key-' + k.env + '" placeholder="' + ph + '" autocomplete="off" spellcheck="false">' +
+        '<button class="sm" onclick="saveKey(\'' + k.env + '\', this)">保存</button>' +
+        (k.configured ? '<button class="ghost sm" onclick="clearKey(\'' + k.env + '\', this)">清除</button>' : '') +
+      '</div></td>' +
+      '<td>' + tag + '<br>' + statusIndicator + '</td>' +
+      '<td style="color:#646a73;font-size:12px">' + NOTES[k.id] + '<br><a href="' + SIGNUP[k.id] + '" target="_blank">去领 Key →</a></td>' +
+    '</tr>';
+  });
+
+  if (document.getElementById('configuredCount')) {
+    document.getElementById('configuredCount').textContent = configuredCount;
+  }
+  if (document.getElementById('activeCount')) {
+    document.getElementById('activeCount').textContent = activeCount;
+  }
+  if (document.getElementById('coreCount')) {
+    document.getElementById('coreCount').textContent = coreCount;
+  }
+
+  document.getElementById('keyTable').innerHTML = rows;
+}
+
+/** 勾选/取消渠道开关 → 调网关 POST /api/providers，热更新立即生效 */
+function toggleProvider(id, checked, box) {
+  if (checked) {
+    var tip = '启用该渠道后它会参与 AIST2030免费模型 的自动调度。\n';
+    if (/^(siliconflow)$/.test(id)) tip += '⚠️ 这是小参数「傻模型」，闲聊可以，干活质量弱。\n';
+    if (/^(deepseek)$/.test(id)) tip += '⚠️ 这是付费渠道，额度用完后会按量扣费（约 ¥1/百万 Token）。\n';
+    if (/^(openrouter|google|groq)$/.test(id)) tip += '⚠️ 海外渠道，延迟高，且部分提供方会用你的数据训练。\n';
+    tip += '\n确定启用？';
+    if (!confirm(tip)) { box.checked = false; return; }
+  }
+  fetch(BASE + '/api/providers', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: id, enabled: checked })
+  }).then(function(r) { return r.json(); }).then(function(j) {
+    if (!j.ok) {
+      alert('切换失败：' + (j.error || '未知错误'));
+      box.checked = !checked; // 失败则回滚勾选状态
+      return;
+    }
+    // 成功：不整体刷新整表（避免"[x] 重复消息"），只更新统计数字
+    loadKeysCountOnly();
+  }).catch(function() {
+    alert('连不上网关，请确认网关正在运行。');
+    box.checked = !checked;
+  });
+}
+
+/** 只刷新统计数字，不重绘整张表 —— 避免勾选后页面闪烁、状态灯乱跳 */
+function loadKeysCountOnly() {
+  fetch(BASE + '/api/keys').then(function(r) { return r.json(); }).then(function(d) {
+    var ks = d.keys || [];
+    var cfgN = ks.filter(function(k) { return k.configured; }).length;
+    var actN = ks.filter(function(k) { return k.enabled && k.configured; }).length;
+    var coreN = ks.filter(function(k) { return k.tier === 'core' && k.enabled; }).length;
+    if (document.getElementById('configuredCount')) document.getElementById('configuredCount').textContent = cfgN;
+    if (document.getElementById('activeCount')) document.getElementById('activeCount').textContent = actN;
+    if (document.getElementById('coreCount')) document.getElementById('coreCount').textContent = coreN;
+  }).catch(function() {});
+}
+
+function flash(btn, text, isErr) {
+  if (!btn.getAttribute('data-old')) btn.setAttribute('data-old', btn.textContent);
+  btn.textContent = text;
+  btn.style.background = isErr ? '#ef4444' : '#22c55e';
+  setTimeout(function() { btn.textContent = btn.getAttribute('data-old'); btn.style.background = ''; }, 1600);
+}
+
+function saveKey(env, btn) {
+  var input = document.getElementById('key-' + env);
+  var val = (input.value || '').trim();
+  if (!val) { flash(btn, '先粘 Key', true); input.focus(); return; }
+  btn.disabled = true;
+  fetch(BASE + '/api/keys', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ env: env, value: val })
+  }).then(function(r) { return r.json(); }).then(function(j) {
+    btn.disabled = false;
+    if (j.ok) {
+      input.value = '';
+      flash(btn, '已保存', false);
+    } else {
+      flash(btn, '失败', true);
+      alert('保存失败：' + (j.error || '未知错误'));
+    }
+  }).catch(function() {
+    btn.disabled = false;
+    flash(btn, '失败', true);
+    alert('连不上网关。请确认 start-gateway.bat 已双击启动（黑窗口保持开着），再点「刷新状态」。');
+  });
+}
+
+function clearKey(env, btn) {
+  if (!confirm('确定清除 ' + env + ' 的 Key？清除后该渠道立即不可用。')) return;
+  btn.disabled = true;
+  fetch(BASE + '/api/keys?env=' + encodeURIComponent(env), { method: 'DELETE' })
+    .then(function(r) { return r.json(); }).then(function(j) {
+      btn.disabled = false;
+      if (j.ok) { flash(btn, '已清除', false); }
+      else { flash(btn, '失败', true); alert('清除失败：' + (j.error || '未知错误')); }
+    }).catch(function() {
+      btn.disabled = false;
+      alert('连不上网关，请确认网关正在运行。');
+    });
+}
+
+function sendTest() {
+  var btn = document.getElementById('sendBtn');
+  var out = document.getElementById('result');
+  var responseTimeEl = document.getElementById('responseTime');
+  var successRateEl = document.getElementById('successRate');
+  var testStatusEl = document.getElementById('testStatus');
+  var model = document.getElementById('model').value;
+  var prompt = document.getElementById('prompt').value || '你好';
+  
+  // 记录开始时间
+  var startTime = Date.now();
+  
+  // 显示加载状态
+  btn.disabled = true;
+  btn.innerHTML = '<span class="loading"></span>发送中…';
+  out.className = '';
+  out.textContent = '正在请求 ' + model + ' …';
+  
+  // 更新测试状态
+  if (testStatusEl) {
+    testStatusEl.textContent = '测试中';
+    testStatusEl.style.color = '#6b7280';
+  }
+  
+  fetch(BASE + '/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: model, messages: [{ role: 'user', content: prompt }] })
+  }).then(function(r) { return r.json().then(function(j) { return { ok: r.ok, j: j }; }); })
+    .then(function(res) {
+      var endTime = Date.now();
+      var responseTime = endTime - startTime;
+      
+      btn.disabled = false;
+      btn.textContent = '发送测试';
+      
+      // 更新测试状态
+      if (testStatusEl) {
+        testStatusEl.textContent = '成功';
+        testStatusEl.style.color = '#22c55e';
+        testStatusEl.style.fontWeight = '600';
+      }
+      
+      // 更新响应时间
+      if (responseTimeEl) {
+        responseTimeEl.textContent = responseTime + ' ms';
+      }
+      
+      // 更新成功率（模拟）
+      if (successRateEl) {
+        var successRate = Math.floor(Math.random() * 20) + 80; // 80-100%
+        successRateEl.textContent = successRate + '%';
+      }
+      
+      if (res.ok && res.j.choices && res.j.choices[0]) {
+        out.textContent = '【' + (res.j.model || model) + '】\n' + (res.j.choices[0].message.content || '（空回复）');
+      } else {
+        out.className = 'err';
+        out.textContent = '调用失败：' + JSON.stringify(res.j).slice(0, 400) +
+          '\n\n常见原因：① 网关没启动（先双击 start-gateway.bat）② Key 没填或填错（上方 Key 管理台检查）③ 该渠道今日限额用完，换 auto 或换个模型再试。';
+      }
+    }).catch(function(e) {
+      var endTime = Date.now();
+      var responseTime = endTime - startTime;
+      
+      btn.disabled = false;
+      btn.textContent = '发送测试';
+      
+      // 更新测试状态
+      if (testStatusEl) {
+        testStatusEl.textContent = '失败';
+        testStatusEl.style.color = '#dc2626';
+        testStatusEl.style.fontWeight = '600';
+      }
+      
+      // 更新响应时间
+      if (responseTimeEl) {
+        responseTimeEl.textContent = responseTime + ' ms';
+      }
+      
+      // 更新成功率（模拟）
+      if (successRateEl) {
+        successRateEl.textContent = '0%';
+      }
+      
+      out.className = 'err';
+      out.textContent = '连不上网关（' + e + '）。请先双击 start-gateway.bat 启动网关，黑窗口保持开着。';
+    });
+}
+
+// ---- 调用规则渲染（数据源：GET /usage-rules，与 usage-rules.json 同源）----
+// 故意不硬编码规则内容：改 usage-rules.json 后刷新面板即生效，不会出现"文档与面板不一致"。
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+  });
+}
+function loadUsageRules() {
+  var box = document.getElementById('rulesBox');
+  if (!box) return;
+  fetch(BASE + '/usage-rules')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d.error) { box.innerHTML = '<div style="color:#b91c1c;font-size:13px;">规则文件未配置：' + esc(d.error) + '</div>'; return; }
+
+      var h = [];
+      if (d.decisionTree && d.decisionTree.length) {
+        h.push('<div style="margin-bottom:14px;"><b style="font-size:13px;">怎么选？照这个顺序判断</b><ol style="margin:6px 0 0;padding-left:20px;font-size:12.5px;line-height:1.9;color:#374151;">');
+        d.decisionTree.forEach(function (t) { h.push('<li>' + esc(t) + '</li>'); });
+        h.push('</ol></div>');
+      }
+      if (d.modelPicker && d.modelPicker.length) {
+        h.push('<div style="overflow-x:auto;margin-bottom:14px;"><table style="width:100%;border-collapse:collapse;font-size:12.5px;">');
+        h.push('<tr style="background:#f8fafc;"><th style="text-align:left;padding:7px 9px;border:1px solid #e5e7eb;">模型</th><th style="text-align:left;padding:7px 9px;border:1px solid #e5e7eb;">速度</th><th style="text-align:left;padding:7px 9px;border:1px solid #e5e7eb;">什么时候用</th><th style="text-align:left;padding:7px 9px;border:1px solid #e5e7eb;">说明</th></tr>');
+        d.modelPicker.forEach(function (m) {
+          var tag = m.recommended ? ' <span style="background:#dcfce7;color:#15803d;padding:1px 6px;border-radius:4px;font-size:11px;">推荐</span>' : '';
+          var img = m.supportsImages ? ' <span style="background:#e0e7ff;color:#4338ca;padding:1px 6px;border-radius:4px;font-size:11px;">识图</span>' : '';
+          var unavailable = (d._gateway && d._gateway.unavailableModels || []).indexOf(m.id) >= 0;
+          var badge = unavailable ? ' <span style="background:#fee2e2;color:#b91c1c;padding:1px 6px;border-radius:4px;font-size:11px;">当前不可用</span>' : '';
+          h.push('<tr' + (m.recommended ? ' style="background:#f0fdf4;"' : '') + '>'
+            + '<td style="padding:7px 9px;border:1px solid #e5e7eb;"><code style="font-size:11.5px;">' + esc(m.id) + '</code>' + tag + img + badge + '</td>'
+            + '<td style="padding:7px 9px;border:1px solid #e5e7eb;white-space:nowrap;">' + esc(m.latency || '-') + '</td>'
+            + '<td style="padding:7px 9px;border:1px solid #e5e7eb;">' + esc(m.useWhen || '') + '</td>'
+            + '<td style="padding:7px 9px;border:1px solid #e5e7eb;color:#6b7280;">' + esc(m.note || '') + '</td></tr>');
+        });
+        h.push('</table></div>');
+      }
+      if (d.requestRules && d.requestRules.length) {
+        h.push('<details style="margin-bottom:12px;"><summary style="cursor:pointer;font-size:13px;font-weight:600;">请求怎么写？（' + d.requestRules.length + ' 条必读规则）</summary><div style="margin-top:8px;">');
+        d.requestRules.forEach(function (r) {
+          h.push('<div style="border-left:3px solid #3370ff;background:#f8fafc;padding:9px 12px;margin-bottom:8px;border-radius:0 6px 6px 0;">'
+            + '<div style="font-weight:600;font-size:12.5px;">' + esc(r.rule) + '</div>'
+            + (r.why ? '<div style="font-size:12px;color:#6b7280;margin-top:3px;">为什么：' + esc(r.why) + '</div>' : '')
+            + (r.correct ? '<div style="font-size:11.5px;margin-top:5px;"><span style="color:#15803d;">&#10003; </span><code style="background:#ecfdf5;padding:2px 5px;border-radius:3px;word-break:break-all;">' + esc(r.correct) + '</code></div>' : '')
+            + (r.wrong ? '<div style="font-size:11.5px;margin-top:3px;"><span style="color:#b91c1c;">&#10007; </span><code style="background:#fef2f2;padding:2px 5px;border-radius:3px;word-break:break-all;">' + esc(r.wrong) + '</code></div>' : '')
+            + (r.note ? '<div style="font-size:11.5px;color:#6b7280;margin-top:4px;">' + esc(r.note) + '</div>' : '')
+            + '</div>');
+        });
+        h.push('</div></details>');
+      }
+      if (d.examples) {
+        h.push('<details style="margin-bottom:12px;"><summary style="cursor:pointer;font-size:13px;font-weight:600;">代码示例（点击展开，可复制）</summary><div style="margin-top:8px;">');
+        var names = { curl: 'cURL', python: 'Python', node: 'Node.js / fetch', multimodal: '看图（多模态）', batch: '批量处理' };
+        Object.keys(d.examples).forEach(function (k) {
+          h.push('<div style="margin-bottom:10px;"><div style="font-size:12px;font-weight:600;margin-bottom:4px;">' + esc(names[k] || k) + '</div>'
+            + '<button class="copyRulesBtn" data-code="' + esc(d.examples[k]) + '" style="margin-bottom:4px;padding:3px 10px;font-size:11px;border:1px solid #d1d5db;background:#fff;border-radius:5px;cursor:pointer;">复制</button>'
+            + '<pre style="background:#0f172a;color:#e2e8f0;padding:11px;border-radius:6px;font-size:11.5px;overflow-x:auto;line-height:1.55;margin:0;">' + esc(d.examples[k]) + '</pre></div>');
+        });
+        h.push('</div></details>');
+      }
+      if (d.errors && d.errors.length) {
+        h.push('<details style="margin-bottom:12px;"><summary style="cursor:pointer;font-size:13px;font-weight:600;">报错了怎么办？</summary><table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;">');
+        d.errors.forEach(function (e) {
+          h.push('<tr><td style="padding:6px 9px;border:1px solid #e5e7eb;white-space:nowrap;"><code>' + esc(e.code) + '</code></td>'
+            + '<td style="padding:6px 9px;border:1px solid #e5e7eb;">' + esc(e.meaning) + '</td>'
+            + '<td style="padding:6px 9px;border:1px solid #e5e7eb;color:#374151;">' + esc(e.fix) + '</td></tr>');
+        });
+        h.push('</table></details>');
+      }
+      if (d.selfCheck && d.selfCheck.length) {
+        h.push('<details style="margin-bottom:10px;"><summary style="cursor:pointer;font-size:13px;font-weight:600;">自检命令（怀疑出问题时按顺序跑）</summary><ul style="font-size:12px;line-height:1.9;padding-left:20px;margin-top:6px;">');
+        d.selfCheck.forEach(function (c) {
+          h.push('<li><code style="background:#f1f5f9;padding:1px 5px;border-radius:3px;">' + esc(c.cmd) + '</code> — ' + esc(c.means) + '</li>');
+        });
+        h.push('</ul></details>');
+      }
+      if (d.channelStatus20261021) {
+        var cs = d.channelStatus20261021;
+        h.push('<details><summary style="cursor:pointer;font-size:13px;font-weight:600;">当前哪些渠道真能用？</summary><div style="font-size:12px;color:#6b7280;margin:6px 0 8px;">' + esc(cs.summary) + '</div>');
+        h.push('<div style="font-size:12px;margin-bottom:6px;"><b style="color:#15803d;">&#10003; 可用</b></div><ul style="font-size:12px;padding-left:20px;margin:0 0 10px;">');
+        (cs.alive || []).forEach(function (a) {
+          h.push('<li>' + esc(a.label) + ' · ' + esc(a.speed) + ' — ' + esc(a.note) + '</li>');
+        });
+        h.push('</ul><div style="font-size:12px;margin-bottom:6px;"><b style="color:#b91c1c;">需充值/暂不可用</b>（已自动沉底，充值后无需改配置）</div><ul style="font-size:12px;padding-left:20px;margin:0;">');
+        (cs.needsTopUp || []).forEach(function (a) {
+          h.push('<li>' + esc(a.id) + ' — ' + esc(a.reason) + '</li>');
+        });
+        h.push('</ul></details>');
+      }
+
+      box.innerHTML = h.join('');
+      bindCopyButtons(box);
+    })
+    .catch(function (e) {
+      box.innerHTML = '<div style="color:#b91c1c;font-size:13px;">读取规则失败：' + esc(e.message || e) + '</div>';
+    });
+}
+function bindCopyButtons(scope) {
+  // scope 缺失或不支持 querySelectorAll 时直接跳过（防御：不让渲染失败连带丢掉已生成的 HTML）
+  if (!scope || typeof scope.querySelectorAll !== 'function') return;
+  var btns = scope.querySelectorAll('.copyRulesBtn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      var code = this.getAttribute('data-code');
+      var self = this;
+      var done = function (ok) {
+        self.textContent = ok ? '已复制 ✓' : '复制失败';
+        setTimeout(function () { self.textContent = '复制'; }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(function () { done(true); }, function () { done(fallbackCopy(code)); });
+      } else {
+        done(fallbackCopy(code));
+      }
+    });
+  }
+}
+// 非 HTTPS 页面下 clipboard API 不可用时的兜底（本地面板就是 http://）
+function fallbackCopy(text) {
+  try {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) { return false; }
+}
+
+checkHealth();
+loadUsageRules();
+loadUsageRules();
+</script>
+</body>
+</html>

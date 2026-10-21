@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Date>2026-07-21T00:00:00</Date>
+    <Author>AIST2030</Author>
+    <Description>AIST2030 头条草稿箱批量发布：每日 07:55 启动当日发布排期</Description>
+  </RegistrationInfo>
+  <Triggers>
+    <CalendarTrigger>
+      <StartBoundary>2026-07-21T07:55:00</StartBoundary>
+      <Enabled>true</Enabled>
+      <ScheduleByDay>
+        <DaysInterval>1</DaysInterval>
+      </ScheduleByDay>
+    </CalendarTrigger>
+  </Triggers>
+  <Principals>
+    <Principal id="Author">
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <ExecutionTimeLimit>PT20H</ExecutionTimeLimit>
+    <Priority>7</Priority>
+  </Settings>
+  <Actions Context="Author">
+    <Exec>
+      <Command>python3.11</Command>
+      <Arguments>scripts/cli.py run-day</Arguments>
+      <WorkingDirectory>C:\toutiao-publisher</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>
+<!--
+  部署（管理员 PowerShell）：
+    Register-ScheduledTask -Xml (Get-Content .\scheduler\task-scheduler.xml | Out-String) -TaskName "AIST2030-ToutiaoDraft"
+  说明：进程因 15min 间隔 sleep 全天存活，末次(~23:45)后退出，次日由本计划任务重新拉起。
+  首次运行前请先执行：python3.11 scripts/cli.py login 完成扫码登录并保存 auth.json。
+-->

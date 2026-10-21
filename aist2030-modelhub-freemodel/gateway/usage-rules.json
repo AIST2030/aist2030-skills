@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "updated": "2026-10-21",
+  "note": "AIST2030 免费模型 · 调用规则。这是给使用者看的\"怎么选模型、怎么写请求、报错了怎么办\"的唯一真源；网关 GET /usage-rules 会原样吐出本文件，控制面板也读它渲染。规则与 models.json（渠道配置）分离：换血改这里，加渠道改那里。",
+
+  "quickStart": {
+    "一句话": "绝大多数情况直接用 model=\"auto\"，它会自己选最快最稳的渠道；只有当你明确知道自己在干什么（要识图 / 要超长文 / 要固定模型做对比）才点名指定。",
+    "最小可用请求": {
+      "method": "POST",
+      "url": "http://127.0.0.1:8787/v1/chat/completions",
+      "headers": { "Content-Type": "application/json" },
+      "body": { "model": "auto", "messages": [{ "role": "user", "content": "你好" }] }
+    },
+    "WorkBuddy 用户": "模型下拉里选带「AIST2030免费」前缀的条目即可，url 已由本 Skill 配好，不需要自己填。"
+  },
+
+  "modelPicker": [
+    {
+      "id": "auto",
+      "name": "AIST2030免费·自动调度",
+      "latency": "0.3~2s",
+      "useWhen": "日常对话、写文案、翻译、总结、问知识——拿不准就用它",
+      "note": "网关会分析问题类型 + 赛马并发前 2 家取最快；首选渠道欠费或限流会自动退到下一家健康的",
+      "recommended": true
+    },
+    {
+      "id": "THUDM/GLM-4-9B-0414",
+      "name": "GLM-4-9B",
+      "vendor": "硅基流动",
+      "latency": "0.3s（实测最快）",
+      "useWhen": "简单问答、中文改写、短文本批量处理；要低延迟就它",
+      "note": "主力渠道，9B 以下模型需在硅基流动完成实名认证"
+    },
+    {
+      "id": "Qwen/Qwen2.5-7B-Instruct",
+      "name": "Qwen2.5-7B",
+      "vendor": "硅基流动",
+      "latency": "0.3s",
+      "useWhen": "写代码、生成 JSON/结构化输出、SQL、正则",
+      "note": "代码与结构化输出明显强于同价位的 GLM；同样需实名认证"
+    },
+    {
+      "id": "glm-4-flash",
+      "name": "GLM-4-Flash",
+      "vendor": "智谱",
+      "latency": "0.6~1.5s",
+      "useWhen": "中文创意写作、文案润色、语气活泼的内容",
+      "note": "中文语感比 GLM-4-9B 更柔和，适合写公众号/朋友圈这类文字"
+    },
+    {
+      "id": "glm-4v-flash",
+      "name": "GLM-4V-Flash（识图）",
+      "vendor": "智谱",
+      "latency": "0.5~2s",
+      "useWhen": "看图问答、识图 OCR、截图里找信息、图表解读",
+      "note": "★ 当前唯一稳定可用的视觉模型。消息里要用 image_url 格式传图，见下方 multimodal 示例",
+      "supportsImages": true
+    },
+    {
+      "id": "LongCat-2.0",
+      "name": "LongCat-2.0",
+      "vendor": "美团",
+      "latency": "1.2~2s",
+      "useWhen": "超长文本：整篇文档总结、长会议纪要、大文件分析",
+      "note": "上下文约 12.5 万字，是唯一能扛超长输入的免费模型"
+    },
+    {
+      "id": "LongCat-2.5-Preview",
+      "name": "LongCat-2.5",
+      "vendor": "美团",
+      "latency": "2~6s",
+      "useWhen": "需要推理链：要分析题、找逻辑漏洞、写复杂方案时",
+      "note": "思考型模型，比 2.0 慢，不要用于简单任务"
+    }
+  ],
+
+  "decisionTree": [
+    "要识图？ → glm-4v-flash（只有它能看图）",
+    "输入超过 2 万字？ → LongCat-2.0（其他模型会截断）",
+    "要写代码或结构化数据？ → Qwen/Qwen2.5-7B-Instruct",
+    "要写有文采的中文？ → glm-4-flash",
+    "要低延迟（做交互/批量）？ → THUDM/GLM-4-9B-0414",
+    "需要推理链？ → LongCat-2.5-Preview",
+    "以上都不是 / 拿不准 → auto"
+  ],
+
+  "requestRules": [
+    {
+      "rule": "中文必须用 UTF-8 发送",
+      "why": "如果用 GBK/Latin-1 发中文，上游模型会「认真回答乱码」，表现为回答跑偏、答非所问，很容易被误判成模型坏了",
+      "correct": "Python: json.dumps(body, ensure_ascii=False).encode('utf-8')",
+      "wrong": "在 Git Bash 里用 curl -d '中文' 直接拼（bash 会按 GBK 发出）",
+      "selfCheck": "网关检测到疑似乱码时，会在响应里带 _gateway_warnings 字段提示；带了这个字段就说明编码错了"
+    },
+    {
+      "rule": "max_tokens 不要设太小",
+      "why": "思考型模型（LongCat-2.5、OpenRouter 系列）会把预算先花在 reasoning 上，max_tokens 给小了正文就一个字都没有（返回 200 但 content 为空）",
+      "correct": "常规给 2048 以上；确实要给很小的值也可以，网关会自动放大重试",
+      "note": "已实测规避：网关内置放大重试，无需调用方自己处理"
+    },
+    {
+      "rule": "要关深度思考就用渠道已配好的模型，别自己传 thinking 参数",
+      "why": "不同厂商的关思考参数不统一（LongCat 认 thinking:{\"type\":\"disabled\"}，智谱认 thinking:disabled），传错会被忽略",
+      "correct": "直接选 glm-4-flash / LongCat-2.0 这类已配置关思考的模型",
+      "note": "extraBody 由 models.json 统一管理，调用方不用管"
+    },
+    {
+      "rule": "点死渠道用「渠道id:模型名」语法可跳过调度",
+      "why": "调试时需要确认某一家上游是否正常，或做多渠道结果对比",
+      "correct": "\"model\": \"bigmodel:glm-4-flash\" 或 \"model\": \"siliconflow:THUDM/GLM-4-9B-0414\"",
+      "note": "⚠ 只有冒号前面是已知渠道 id 时才算渠道锁；OpenRouter 的 nvidia/xxx:free 这类模型名带冒号不会被误判"
+    }
+  ],
+
+  "examples": {
+    "curl": "curl -s --noproxy '*' -X POST http://127.0.0.1:8787/v1/chat/completions \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"model\":\"auto\",\"messages\":[{\"role\":\"user\",\"content\":\"用一句话说：1+1等于几\"}]}'\n\n★ 一定要加 --noproxy '*'，否则本机代理会拦截请求。\n★ curl 里要传中文，改用 --data-binary @payload.json（payload.json 用 UTF-8 存）而不是 -d '中文'。",
+
+    "python": "import json, urllib.request\n\nbody = {'model': 'auto', 'messages': [{'role': 'user', 'content': '用一句话说：1+1等于几'}]}\nraw = json.dumps(body, ensure_ascii=False).encode('utf-8')   # ← ensure_ascii=False 必须有\nreq = urllib.request.Request(\n    'http://127.0.0.1:8787/v1/chat/completions',\n    data=raw, headers={'Content-Type': 'application/json'})\nwith urllib.request.urlopen(req, timeout=120) as r:\n    d = json.loads(r.read().decode('utf-8'))\nprint(d['choices'][0]['message']['content'])\nif d.get('_gateway_warnings'):\n    print('⚠ 编码警告：', d['_gateway_warnings'])",
+
+    "node": "const res = await fetch('http://127.0.0.1:8787/v1/chat/completions', {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ model: 'auto', messages: [{ role: 'user', content: '你好' }] }),\n});\nconst d = await res.json();\nconsole.log(d.choices?.[0]?.message?.content);",
+
+    "multimodal": "// 看图：content 是数组，text 和 image_url 都要带\n{\n  \"model\": \"glm-4v-flash\",\n  \"messages\": [{\n    \"role\": \"user\",\n    \"content\": [\n      { \"type\": \"text\", \"text\": \"这张图里有什么？\" },\n      { \"type\": \"image_url\", \"image_url\": { \"url\": \"data:image/png;base64,iVBORw0KGgo...\" } }\n    ]\n  }]\n}\n// url 也可以直接填 https 图片地址；base64 更稳（外链有时会被拒）。",
+
+    "batch": "// 批量处理：控制并发 4 路，别一次开几十条（免费渠道有速率限制）\n// 实测 5 路并发稳定，超过就会被限流\nfor (const item of items) {\n  await callGateway({ model: 'THUDM/GLM-4-9B-0414', messages: [{ role: 'user', content: item.q }] });\n}\n// 大批量（100+）建议先跑 python gateway/health_check.py 确认渠道还活着，再开工。"
+  },
+
+  "errors": [
+    { "code": 502, "meaning": "全部渠道都失败", "fix": "跑 python gateway/health_check.py 看哪几家可用；通常是没配 Key 或 Key 失效" },
+    { "code": 503, "meaning": "该模型所在渠道在熔断冷却中", "fix": "响应体里的 message 是中文说明，会写明「什么时候恢复」和「可用替代」；auto 模式不受影响" },
+    { "code": 429, "meaning": "触发了免费额度限流", "fix": "OpenRouter 是每天 50 次、次日 08:00 重置；智谱/硅基是分钟级限流，等几分钟或换一家" },
+    { "code": 402, "meaning": "上游账号余额不足", "fix": "该渠道已自动沉底；充值后无需改配置，冷却到期自动归队" },
+    { "code": 400, "meaning": "账号状态异常/欠费，或 Key 格式不对", "fix": "智谱 Key 是两段式 id.secret，两段都要填，只填前半段会全渠道 401" },
+    { "emptyContent": "返回 200 但正文为空", "fix": "网关已自动拦截并重试/换渠道；若你直连上游遇到，检查是不是 max_tokens 太小或没关深度思考" }
+  ],
+
+  "selfCheck": [
+    { "cmd": "GET http://127.0.0.1:8787/health", "means": "看 ok / providersReady / circuit.open（熔断中的渠道）" },
+    { "cmd": "GET http://127.0.0.1:8787/v1/models", "means": "当前真正可路由的模型清单" },
+    { "cmd": "GET http://127.0.0.1:8787/usage-rules", "means": "本文件（调用规则）" },
+    { "cmd": "python gateway/health_check.py", "means": "并发体检全部渠道，输出每家可用状态与原因，最直接" },
+    { "cmd": "打开 http://127.0.0.1:8787", "means": "控制面板：填 Key、看熔断状态、在线试聊" }
+  ],
+
+  "channelStatus20261021": {
+    "summary": "2026-10-21 全渠道体检结论：23 家里真正可用的只有 3 家，其余是账号额度问题（已沉底，充值即自动归队，不需要改配置）。",
+    "alive": [
+      { "id": "siliconflow", "label": "硅基流动", "speed": "0.3s", "note": "最快主力，需实名认证" },
+      { "id": "bigmodel", "label": "智谱 GLM", "speed": "0.5~1.5s", "note": "glm-4v-flash 可识图" },
+      { "id": "longcat", "label": "美团 LongCat", "speed": "1.2~2s", "note": "12.5 万字长文本" }
+    ],
+    "needsTopUp": [
+      { "id": "deepseek", "reason": "402 余额不足" },
+      { "id": "dashscope", "reason": "400 阿里云百炼欠费" },
+      { "id": "moma", "reason": "402 需在控制台订购免费套餐" },
+      { "id": "mimo", "reason": "402 小米试用额度已尽" },
+      { "id": "qianfan", "reason": "403 百度欠费" },
+      { "id": "volcengine", "reason": "404 模型名需更正" },
+      { "id": "openrouter", "reason": "429 每日 50 次额度用尽，次日 08:00 恢复" },
+      { "id": "bigmodel-old-models", "reason": "1113 智谱旧模型资源包耗尽（glm-4.5-air 等，已从清单移除）" }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "AIST2030免费模型智能管家",
+  "id": "aist2030-free-model-manager",
+  "version": "1.2.0",
+  "description": "一句话配置免费大模型集合，按提问类型智能调度，内置全渠道体检、自动熔断降级与可查询调用规则的AI工作台增强工具",
+  "author": "贵州省团之家智付科技有限公司",
+  "license": "MIT",
+  "type": "skill",
+  "category": [
+    "AI",
+    "Productivity",
+    "Developer Tools"
+  ],
+  "tags": [
+    "免费模型",
+    "AI工作台",
+    "智能调优",
+    "免费"
+  ],
+  "requirements": {
+    "workbuddy_version": ">=5.8.0",
+    "dependencies": [
+      "free-model-gateway"
+    ]
+  },
+  "entry_point": "main.js",
+  "permissions": [
+    "filesystem:read",
+    "filesystem:write",
+    "network:access"
+  ],
+  "features": [
+    "one-shot-configuration",
+    "user-habit-learning",
+    "auto-model-tuning",
+    "local-key-storage",
+    "real-time-performance-monitoring",
+    "channel-health-check",
+    "circuit-breaker-fallback",
+    "empty-response-guard",
+    "usage-rules-api",
+    "control-panel-rules-viewer"
+  ],
+  "supported_platforms": [
+    "windows",
+    "macos",
+    "linux"
+  ],
+  "documentation": {
+    "quick_start": "docs/quick-start.md",
+    "advanced_usage": "docs/advanced-usage.md",
+    "troubleshooting": "docs/troubleshooting.md"
+  }
+}

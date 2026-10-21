@@ -1,0 +1,8 @@
+# ppt2video 出片流水线依赖（买家本机运行 scripts/pipeline.py 前安装）
+# 另需本机已装 WPS 或 Microsoft PowerPoint（导图依赖 Windows COM 接口）
+edge-tts
+python-pptx
+jieba
+comtypes
+numpy
+imageio-ffmpeg

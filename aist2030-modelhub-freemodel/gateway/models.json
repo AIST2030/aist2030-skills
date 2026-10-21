@@ -1,0 +1,403 @@
+{
+  "version": 11,
+  "updated": "2026-10-21",
+  "note": "AIST2030免费模型路由表 v11（2026-10-21 全渠道体检 + 逐条压测）。★可用主力仅 3 家：siliconflow（0.3s 最快）/ bigmodel 智谱（0.5~1.5s，glm-4v-flash 可识图）/ longcat 美团（1.2~2s，12.5万字长文）。★已沉底 8 家（充值或恢复后自动归队，无需改配置）：deepseek(402余额不足) / dashscope(400欠费) / moma(402未订购套餐) / mimo(402余额) / qianfan(403逾期) / volcengine(404模型名无效) / openrouter(每日50次额度、次日08:00恢复)。★核心修复：①分类器不再覆盖请求 model（曾让 auto 候选集塌缩成1家、该家欠费即报『全部渠道失败』）；②空 content 校验漏洞（`a||b||c` 会把空串短路成 undefined 导致假成功）；③瞬时错误(超时/抖动)只软降权不熔断，账号级错误才长冷却；④每日额度型限流冷却到重置时刻；⑤客户端 max_tokens 过小时自动放大重试（思考型模型正文被吃光的克星）。tier: core=自动池主用 / weak=备用 / dead=当前不可用(需充值或改配置) / unverified=待验证。",
+  "defaultModel": "auto",
+  "providers": [
+    {
+      "id": "bigmodel",
+      "label": "智谱 BigModel（GLM-4-Flash·免费可用）",
+      "baseUrl": "https://open.bigmodel.cn/api/paas/v4",
+      "apiKeyEnv": "BIGMODEL_API_KEY",
+      "priority": 2,
+      "enabled": true,
+      "defaultModel": "glm-4-flash",
+      "timeoutMs": 20000,
+      "extraBody": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "models": [
+        "glm-4-flash",
+        "glm-4v-flash"
+      ],
+      "note": "★2026-10-21 11:30 体检：可用。glm-4-flash 0.5~1.5s、glm-4v-flash 0.5s（识图实测准确）。★ 1113 余额不足的老模型（glm-4.5-air/airx/4.7-flash/4v-plus）已从 models 列表移除。 ★ 智谱侧：glm-4-flash 偶发排队 3~5s，timeoutMs 已放宽到 20s。",
+      "tier": "core"
+    },
+    {
+      "id": "dashscope",
+      "label": "阿里云百炼 DashScope（qwen-plus·实测 0.69s）",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "apiKeyEnv": "DASHSCOPE_API_KEY",
+      "priority": 40,
+      "enabled": true,
+      "defaultModel": "qwen-plus",
+      "timeoutMs": 8000,
+      "models": [
+        "qwen-plus",
+        "qwen-long",
+        "qwen-turbo",
+        "qwen-vl-max-latest",
+        "qwen-vl-plus-latest",
+        "qwen2.5-vl-72b-instruct"
+      ],
+      "note": "★2026-10-21 11:30 体检：400 Access denied, account not in good standing（阿里云百炼欠费）→ priority 40，充值后自动归队。",
+      "tier": "dead"
+    },
+    {
+      "id": "siliconflow",
+      "label": "硅基流动 SiliconFlow（GLM-4-9B·实测 0.28s）",
+      "baseUrl": "https://api.siliconflow.cn/v1",
+      "apiKeyEnv": "SILICONFLOW_API_KEY",
+      "priority": 1,
+      "enabled": true,
+      "defaultModel": "THUDM/GLM-4-9B-0414",
+      "timeoutMs": 20000,
+      "models": [
+        "THUDM/GLM-4-9B-0414",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
+      ],
+      "note": "★2026-10-21 11:30 体检：可用，最快（GLM-4-9B 0.3s、Qwen2.5-7B 0.25s）。需实名认证才能用 9B 以下模型。",
+      "tier": "core"
+    },
+    {
+      "id": "deepseek",
+      "label": "DeepSeek（质量最好·实测 0.30s）",
+      "baseUrl": "https://api.deepseek.com/v1",
+      "apiKeyEnv": "DEEPSEEK_API_KEY",
+      "priority": 8,
+      "enabled": true,
+      "defaultModel": "deepseek-chat",
+      "timeoutMs": 20000,
+      "models": [
+        "deepseek-chat"
+      ],
+      "note": "★2026-10-21 11:30 体检：deepseek-chat 402 Insufficient Balance（余额已耗尽）→ priority 沉到 8，账号充值后自动归队。当前主力由 siliconflow/bigmodel/longcat 承担。",
+      "tier": "dead"
+    },
+    {
+      "id": "openrouter",
+      "label": "OpenRouter 免费池（多模型·实测 2~4s）",
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "apiKeyEnv": "OPENROUTER_API_KEY",
+      "priority": 6,
+      "enabled": true,
+      "defaultModel": "nvidia/nemotron-3.5-super-vl:free",
+      "timeoutMs": 20000,
+      "models": [
+        "nvidia/nemotron-3.5-super-vl:free",
+        "minimax/minimax-m3.1-flash:free",
+        "poolside/laguna-s-2.1:free",
+        "dots-studio/dots-3-note-preview:free",
+        "openrouter/free"
+      ],
+      "note": "★2026-10-21 实测：OpenRouter 免费模型池大改版，旧配置（qwen/qwen3.8-27b、google/gemma-4-31b-it、nvidia/nemotron-3-super-120b）已失效（unavailable for free / 404 / 429）。重新拉 /api/v1/models 真实清单并逐个实测，当前可用：nemotron-3.5-super-vl、minimax-m3.1-flash、poolside/laguna-s-2.1、dots-3-note-preview、openrouter/free。★ 重要限制：免费额度是【每天 50 次】（错误码 429 free-models-per-day），重置时刻 08:00（UTC+8）。网关已改为识别该错误并冷却到重置时刻，避免每 5 分钟空刷。额度极珍贵 → priority 沉到 6，只在前面渠道全挂时才用；图片类需求（supportsImages）用 nemotron-3.5-super-vl。★ 模型名带 \":free\" 后缀，网关的渠道锁语法已做兼容修复。 ★timeoutMs 12000→20000ms（2026-10-21 修：6s 太紧，排队时正常响应被误判超时 → 熔断主力渠道）。",
+      "tier": "weak"
+    },
+    {
+      "id": "dashscope-long",
+      "label": "百炼 qwen-long（长文本兜底·实测 0.65s）",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "apiKeyEnv": "DASHSCOPE_API_KEY",
+      "priority": 41,
+      "enabled": true,
+      "defaultModel": "qwen-long",
+      "timeoutMs": 10000,
+      "models": [
+        "qwen-long",
+        "qwen-turbo"
+      ],
+      "note": "★2026-10-21 11:30 体检：400 Access denied（同 dashscope，阿里云百炼欠费）→ priority 41。",
+      "tier": "dead"
+    },
+    {
+      "id": "google",
+      "label": "Google AI Studio（Gemini 多模态）",
+      "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai/",
+      "apiKeyEnv": "GOOGLE_API_KEY",
+      "priority": 7,
+      "enabled": false,
+      "defaultModel": "gemini-2.5-flash",
+      "timeoutMs": 20000,
+      "models": [
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite"
+      ],
+      "note": "未填 Key，实际不参与调度。免费层 5-15 请求/分、20-1500 次/天，100 万上下文、支持图文音视频。坑：需海外网络；免费层数据可能被用于改进产品。",
+      "tier": "slow"
+    },
+    {
+      "id": "groq",
+      "label": "Groq（极速推理）",
+      "baseUrl": "https://api.groq.com/openai/v1",
+      "apiKeyEnv": "GROQ_API_KEY",
+      "priority": 8,
+      "enabled": false,
+      "defaultModel": "llama-3.3-70b-versatile",
+      "timeoutMs": 15000,
+      "models": [
+        "llama-3.3-70b-versatile"
+      ],
+      "note": "未填 Key，实际不参与调度。输出速度数百 Token/秒，适合实时对话。坑：需海外网络。",
+      "tier": "slow"
+    },
+    {
+      "id": "qianfan",
+      "label": "百度千帆（已欠费·停用）",
+      "baseUrl": "https://qianfan.baidubce.com/v2",
+      "apiKeyEnv": "QIANFAN_API_KEY",
+      "priority": 44,
+      "enabled": true,
+      "defaultModel": "ernie-4.0-8k-latest",
+      "timeoutMs": 15000,
+      "models": [
+        "ernie-4.0-8k-latest"
+      ],
+      "note": "★2026-10-21 11:30 体检：403 account_overdue（百度欠费）→ priority 44，充值后自动归队。",
+      "tier": "dead"
+    },
+    {
+      "id": "github-models",
+      "label": "GitHub Models（端点失效·停用）",
+      "baseUrl": "https://models.github.ai/inference",
+      "apiKeyEnv": "GITHUB_TOKEN",
+      "priority": 32,
+      "enabled": false,
+      "defaultModel": "openai/gpt-4o-mini",
+      "timeoutMs": 15000,
+      "models": [
+        "openai/gpt-4o-mini"
+      ],
+      "note": "2026-10-19 实测：HTTP 200 但响应体是纯文本 \"OK\"，不是 JSON → 该 PAT 无 Models 权限或端点已变更，已停用。旧端点 models.inference.ai.azure.com 早已停服。",
+      "tier": "unverified"
+    },
+    {
+      "id": "volcengine",
+      "label": "火山引擎方舟（未开通·停用）",
+      "baseUrl": "https://ark.cn-beijing.volces.com/api/v3",
+      "apiKeyEnv": "VOLC_API_KEY",
+      "priority": 45,
+      "enabled": true,
+      "defaultModel": "doubao-lite-32k",
+      "timeoutMs": 15000,
+      "models": [
+        "doubao-lite-32k",
+        "doubao-1.5-lite-32k"
+      ],
+      "note": "★2026-10-21 11:30 体检：404 InvalidEndpointOrModel（火山模型名无效，需改模型名）→ priority 45。",
+      "tier": "dead"
+    },
+    {
+      "id": "ollama",
+      "label": "Ollama 本地（零成本零限流）",
+      "baseUrl": "http://localhost:11434/v1",
+      "apiKeyEnv": "OLLAMA_API_KEY",
+      "priority": 34,
+      "enabled": false,
+      "defaultModel": "qwen3:8b",
+      "timeoutMs": 60000,
+      "models": [
+        "qwen3:8b",
+        "deepseek-r1:7b"
+      ],
+      "note": "本机装 Ollama 后完全免费、无限流、数据不出本机。默认关闭：enabled 改 true 且 OLLAMA_API_KEY 填 ollama（占位）即可。本地推理慢但永不限流，适合当最后兜底。",
+      "tier": "unverified"
+    },
+    {
+      "id": "moma",
+      "label": "中国移动 MoMA（2500万Token免费额度）",
+      "baseUrl": "https://moma.cmecloud.cn/v1",
+      "apiKeyEnv": "MOMA_API_KEY",
+      "priority": 42,
+      "enabled": true,
+      "defaultModel": "glm-5.3-flash",
+      "timeoutMs": 15000,
+      "extraBody": {
+        "max_tokens": 4096
+      },
+      "models": [
+        "glm-5.3-flash",
+        "deepseek-v4.1-flash",
+        "jiutian-35b-256k-chat",
+        "zhipu/glm-5.3-flash",
+        "qwen/qwen3.8-max"
+      ],
+      "note": "★2026-10-21 11:30 体检：402 当前账号没有可用套餐（需在控制台订购模型管理订阅免费套餐）→ priority 42。",
+      "tier": "dead"
+    },
+    {
+      "id": "longcat",
+      "label": "美团 LongCat（LongCat-2.0·实测 1.33s）",
+      "baseUrl": "https://api.longcat.chat/openai/v1",
+      "apiKeyEnv": "LONGCAT_API_KEY",
+      "priority": 3,
+      "enabled": true,
+      "defaultModel": "LongCat-2.0",
+      "timeoutMs": 40000,
+      "extraBody": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "models": [
+        "LongCat-2.0",
+        "LongCat-2.5-Preview"
+      ],
+      "note": "★2026-10-21 11:30 体检：可用（LongCat-2.0 1.2~2s、2.5-Preview 2~6s）。已带 thinking:disabled 关思考。 ★timeoutMs 25000→40000ms（2026-10-21 修：实测 LongCat 慢时可达 19~30s，25s 仍偶发 504 超时）。★ 另：LongCat 必须带 thinking:{\"type\":\"disabled\"}，否则思考吃掉 max_tokens 导致正文为空。",
+      "tier": "core"
+    },
+    {
+      "id": "mimo",
+      "label": "小米 MiMo（新账号送$2试用额度）",
+      "baseUrl": "https://api.xiaomimimo.com/v1",
+      "apiKeyEnv": "MIMO_API_KEY",
+      "priority": 43,
+      "enabled": true,
+      "defaultModel": "mimo-v2.6-flash",
+      "timeoutMs": 15000,
+      "extraBody": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "models": [
+        "mimo-v2.6-flash",
+        "mimo-v2.6-pro",
+        "mimo-v2.5-pro"
+      ],
+      "note": "★2026-10-21 11:30 体检：402 Insufficient account balance（小米试用额度已尽）→ priority 43。",
+      "tier": "dead"
+    },
+    {
+      "id": "nim",
+      "label": "NVIDIA NIM（无限量）",
+      "baseUrl": "https://build.nvidia.com/api/v1",
+      "apiKeyEnv": "NIM_API_KEY",
+      "priority": 23,
+      "enabled": false,
+      "defaultModel": "nvidia-llama-3.1-8b",
+      "timeoutMs": 15000,
+      "models": [
+        "nvidia-llama-3.1-8b",
+        "nvidia-qwen-7b",
+        "nvidia-chatglm3-6b"
+      ],
+      "note": "需NVIDIA账号，适合专业开发者，GPU加速",
+      "tier": "dead"
+    },
+    {
+      "id": "anthropic",
+      "label": "Anthropic Claude（新户100万Token）",
+      "baseUrl": "https://api.anthropic.com/v1",
+      "apiKeyEnv": "ANTHROPIC_API_KEY",
+      "priority": 24,
+      "enabled": false,
+      "defaultModel": "claude-3-sonnet-20240229",
+      "timeoutMs": 15000,
+      "models": [
+        "claude-3-sonnet-20240229",
+        "claude-3-haiku-20240307"
+      ],
+      "note": "Claude 3.5 Sonnet质量极高，需海外网络",
+      "tier": "unverified"
+    },
+    {
+      "id": "cohere",
+      "label": "Cohere（新户100万Token）",
+      "baseUrl": "https://api.cohere.ai/v1",
+      "apiKeyEnv": "COHERE_API_KEY",
+      "priority": 25,
+      "enabled": false,
+      "defaultModel": "command-r-plus",
+      "timeoutMs": 15000,
+      "models": [
+        "command-r-plus",
+        "command-r",
+        "command"
+      ],
+      "note": "多语言支持强，适合文本生成，需海外网络",
+      "tier": "unverified"
+    },
+    {
+      "id": "perplexity",
+      "label": "Perplexity Labs（免费层）",
+      "baseUrl": "https://api.perplexity.ai/v1",
+      "apiKeyEnv": "PERPLEXITY_API_KEY",
+      "priority": 26,
+      "enabled": false,
+      "defaultModel": "perplexity-sonnet",
+      "timeoutMs": 15000,
+      "models": [
+        "perplexity-sonnet",
+        "perplexity-chat"
+      ],
+      "note": "搜索增强型AI，适合研究，需海外网络",
+      "tier": "unverified"
+    },
+    {
+      "id": "huggingface",
+      "label": "Hugging Face（推理API免费层）",
+      "baseUrl": "https://api-inference.huggingface.co/v1",
+      "apiKeyEnv": "HUGGINGFACE_API_KEY",
+      "priority": 27,
+      "enabled": false,
+      "defaultModel": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+      "timeoutMs": 15000,
+      "models": [
+        "meta-llama/Meta-Llama-3.1-8B-Instruct",
+        "mistralai/Mixtral-8x7B-Instruct-v0.1"
+      ],
+      "note": "最大开源模型社区，免费推理API，需海外网络",
+      "tier": "unverified"
+    },
+    {
+      "id": "replicate",
+      "label": "Replicate（新户1000次）",
+      "baseUrl": "https://api.replicate.com/v1",
+      "apiKeyEnv": "REPLICATE_API_KEY",
+      "priority": 28,
+      "enabled": false,
+      "defaultModel": "meta/meta-llama-3.1-70b-instruct",
+      "timeoutMs": 15000,
+      "models": [
+        "meta/meta-llama-3.1-70b-instruct",
+        "mistralai/mixtral-8x7b-instruct-v0.1"
+      ],
+      "note": "高质量模型，适合专业用途，需海外网络",
+      "tier": "unverified"
+    },
+    {
+      "id": "tencent-hunyuan",
+      "label": "腾讯混元（免费试用）",
+      "baseUrl": "https://tencent-hunyuan.api/v1",
+      "apiKeyEnv": "TENCENT-HUNYUAN_API_KEY",
+      "priority": 29,
+      "enabled": false,
+      "defaultModel": "tencent-hunyuan-default",
+      "timeoutMs": 15000,
+      "models": [
+        "tencent-hunyuan-default"
+      ],
+      "note": "❌ 域名 tencent-hunyuan.api 非法（无有效后缀），DNS 无法解析 → 停用。",
+      "tier": "dead"
+    },
+    {
+      "id": "minimax",
+      "label": "MiniMax（新户100万Token）",
+      "baseUrl": "https://api.minimax.chat/v1",
+      "apiKeyEnv": "MINIMAX_API_KEY",
+      "priority": 30,
+      "enabled": false,
+      "defaultModel": "abab-6.5-chat",
+      "timeoutMs": 15000,
+      "models": [
+        "abab-6.5-chat",
+        "abab-6.5"
+      ],
+      "note": "新兴AI平台，支持多种模型，需要验证API",
+      "tier": "unverified"
+    }
+  ]
+}

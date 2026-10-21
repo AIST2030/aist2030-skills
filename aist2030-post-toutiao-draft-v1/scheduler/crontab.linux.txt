@@ -1,0 +1,15 @@
+# AIST2030 头条草稿箱批量发布 —— cron 模板（Linux / macOS）
+#
+# 每日 07:55 启动当日发布。进程因 15min 间隔 sleep 全天存活，末次发布(~23:45)后退出，
+# 次日由 cron 重新拉起（满足"保持后台运行以备次日任务"）。
+#
+# 部署步骤：
+#   1. 将本包放到固定目录，例如 /opt/toutiao-publisher
+#   2. 首次登录：python3.11 scripts/cli.py login
+#   3. 安装依赖：pip install -r requirements.txt
+#   4. 写入 cron：crontab crontab.linux.txt   （或 crontab -e 粘贴下方一行，按需改路径/python）
+#   5. 监控：tail -f run.log / cat state.json / cat notify.log
+#
+# 注意：crontab 环境 PATH 较窄，请写绝对路径的 python3.11 与工作目录。
+
+55 7 * * * cd /opt/toutiao-publisher && /usr/bin/python3.11 scripts/cli.py run-day >> run.log 2>&1
