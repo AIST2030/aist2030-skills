@@ -1,0 +1,398 @@
+{
+ "generatedAt": "2026-10-21 15:18:24",
+ "skills": [
+  {
+   "slug": "aist2030-modelhub-freemodel",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-modelhub-freemodel",
+   "files": 36,
+   "displayName": "AIST2030免费模型智能管家"
+  },
+  {
+   "slug": "aist2030-vmix-product-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-vmix-product-v1",
+   "files": 1,
+   "displayName": "AIST2030 产品/商品发布混剪"
+  },
+  {
+   "slug": "aist2030-product-explain-video-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-product-explain-video-v1",
+   "files": 9,
+   "displayName": "AIST2030 产品讲解视频（全自动产线）"
+  },
+  {
+   "slug": "aist2030-vmix-festival-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-vmix-festival-v1",
+   "files": 1,
+   "displayName": "AIST2030 节日/大促活动混剪"
+  },
+  {
+   "slug": "aist2030-vmix-recruit-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-vmix-recruit-v1",
+   "files": 1,
+   "displayName": "AIST2030 招聘/雇主品牌宣传混剪"
+  },
+  {
+   "slug": "aist2030-vmix-course-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-vmix-course-v1",
+   "files": 1,
+   "displayName": "AIST2030 课程/知识付费宣传混剪"
+  },
+  {
+   "slug": "aist2030-vmix-local-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-vmix-local-v1",
+   "files": 1,
+   "displayName": "AIST2030 本地生活探店混剪（开业/团购/引流）"
+  },
+  {
+   "slug": "aist2030-vmix-pro-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-vmix-pro-v1",
+   "files": 1,
+   "displayName": "AIST2030 综合场景混剪（自动路由 6 大场景）"
+  },
+  {
+   "slug": "aist2030-vmix-event-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-vmix-event-v1",
+   "files": 1,
+   "displayName": "AIST2030 活动宣传混剪（演出/电影预告级）"
+  },
+  {
+   "slug": "aist2030-chatcut-mcp-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-chatcut-mcp-v1",
+   "files": 1,
+   "displayName": "AIST2030 ChatCut-Lite MCP 接入（自定义剪辑引擎）"
+  },
+  {
+   "slug": "aist2030-course-ppt-revival-v1",
+   "source": "skillhub",
+   "src": "F:\\Work_Buddy\\SKILL工厂\\多通道发布体系\\_skillhub_dl\\aist2030-course-ppt-revival-v1.zip",
+   "files": 9,
+   "displayName": "AIST2030 老旧课程 PPT 复活（付费版 v1）"
+  },
+  {
+   "slug": "aist2030-chatcut-lite-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-chatcut-lite-v1",
+   "files": 4,
+   "displayName": "AIST2030 ChatCut-Lite 本地 AI 视频剪辑（零积分）"
+  },
+  {
+   "slug": "aist2030-post-xhs-v2",
+   "source": "zip",
+   "src": "F:\\Work_Buddy\\SKILL工厂\\_publish_zips_free\\aist2030-post-xhs-v2-free.zip",
+   "files": 3,
+   "displayName": "AIST2030 小红书笔记"
+  },
+  {
+   "slug": "aist2030-dev-drama-reedit-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-dev-drama-reedit-v1",
+   "files": 23,
+   "displayName": "AIST2030 短剧二创剪辑流水线"
+  },
+  {
+   "slug": "aist2030-mass-ppt-narration-video-v3",
+   "source": "skillhub",
+   "src": "F:\\Work_Buddy\\SKILL工厂\\多通道发布体系\\_skillhub_dl\\aist2030-mass-ppt-narration-video-v3.zip",
+   "files": 6,
+   "displayName": "AIST2030 PPT 备注转讲解视频（付费版 v3）"
+  },
+  {
+   "slug": "aist2030-post-image-search-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-image-search-v1",
+   "files": 3,
+   "displayName": "AIST2030 配图检索"
+  },
+  {
+   "slug": "aist2030-mass-renwu-zhi-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-mass-renwu-zhi-v1",
+   "files": 1,
+   "displayName": "AIST2030 人物志 PPT 制作流程"
+  },
+  {
+   "slug": "aist2030-kb-card-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-kb-card-v1",
+   "files": 3,
+   "displayName": "AIST2030 知识卡片整理"
+  },
+  {
+   "slug": "aist2030-post-zhihu-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-zhihu-v1",
+   "files": 3,
+   "displayName": "AIST2030 知乎专业回答"
+  },
+  {
+   "slug": "aist2030-tool-weiyun-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-tool-weiyun-v1",
+   "files": 11,
+   "displayName": "AIST2030 腾讯微云集成"
+  },
+  {
+   "slug": "aist2030-post-video-search-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-video-search-v1",
+   "files": 3,
+   "displayName": "AIST2030 视频检索"
+  },
+  {
+   "slug": "aist2030-post-wechat-review-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-wechat-review-v1",
+   "files": 2,
+   "displayName": "AIST2030 微信公众号内容审核"
+  },
+  {
+   "slug": "aist2030-post-media-search-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-media-search-v1",
+   "files": 4,
+   "displayName": "AIST2030 媒体检索（API 图+视频）"
+  },
+  {
+   "slug": "aist2030-mass-matrix-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-mass-matrix-v1",
+   "files": 3,
+   "displayName": "AIST2030 内容矩阵量产"
+  },
+  {
+   "slug": "aist2030-tool-local-image-text-erase-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-tool-local-image-text-erase-v1",
+   "files": 3,
+   "displayName": "AIST2030 本地图片去字"
+  },
+  {
+   "slug": "aist2030-pub-poster-canvas-design-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-pub-poster-canvas-design-v1",
+   "files": 1,
+   "displayName": "AIST2030 海报画布设计"
+  },
+  {
+   "slug": "aist2030-post-product-video-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-product-video-v1",
+   "files": 5,
+   "displayName": "AIST2030 产品视频生成（文心+千帆）"
+  },
+  {
+   "slug": "aist2030-mass-industry-sop-producer-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-mass-industry-sop-producer-v1",
+   "files": 1,
+   "displayName": "AIST2030 行业获客 SOP 生产流水线"
+  },
+  {
+   "slug": "aist2030-gov-skill-standard-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-gov-skill-standard-v1",
+   "files": 6,
+   "displayName": "AIST2030 技能搭建标准"
+  },
+  {
+   "slug": "aist2030-dev-windows-ai-exe-toolkit-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-dev-windows-ai-exe-toolkit-v1",
+   "files": 1,
+   "displayName": "AIST2030 Windows AI工具箱"
+  },
+  {
+   "slug": "aist2030-post-wechat-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-wechat-v1",
+   "files": 3,
+   "displayName": "AIST2030 公众号长文"
+  },
+  {
+   "slug": "aist2030-post-image-search-cc0-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-image-search-cc0-v1",
+   "files": 7,
+   "displayName": "AIST2030 合规配图检索（cc0 单站版）"
+  },
+  {
+   "slug": "aist2030-dev-windows-local-media-pipeline-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-dev-windows-local-media-pipeline-v1",
+   "files": 1,
+   "displayName": "AIST2030 本地媒体处理流水线"
+  },
+  {
+   "slug": "aist2030-mass-image-awake-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-mass-image-awake-v1",
+   "files": 2,
+   "displayName": "AIST2030 图片唤醒工具"
+  },
+  {
+   "slug": "aist2030-dev-ppt-narration-video-v2",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-dev-ppt-narration-video-v2",
+   "files": 2,
+   "displayName": "AIST2030 PPT 备注转讲解视频（通用版 v2）"
+  },
+  {
+   "slug": "aist2030-dev-pyside6-desktop-app-iteration-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-dev-pyside6-desktop-app-iteration-v1",
+   "files": 1,
+   "displayName": "AIST2030 PySide6桌面应用迭代"
+  },
+  {
+   "slug": "aist2030-ai-paid-backend-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-ai-paid-backend-v1",
+   "files": 1,
+   "displayName": "AIST2030 AI付费后端接入"
+  },
+  {
+   "slug": "aist2030-post-toutiao-draft-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-toutiao-draft-v1",
+   "files": 17,
+   "displayName": "AIST2030 头条草稿箱批量发布"
+  },
+  {
+   "slug": "aist2030-course-script-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-course-script-v1",
+   "files": 3,
+   "displayName": "AIST2030 逐字稿与PPT脚本"
+  },
+  {
+   "slug": "aist2030-tool-link-image-fetch-v3",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-tool-link-image-fetch-v3",
+   "files": 9,
+   "displayName": "AIST2030 链接批量取图"
+  },
+  {
+   "slug": "aist2030-kb-tag-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-kb-tag-v1",
+   "files": 3,
+   "displayName": "AIST2030 知识检索标注"
+  },
+  {
+   "slug": "aist2030-gov-skill-review-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-gov-skill-review-v1",
+   "files": 5,
+   "displayName": "AIST2030 技能发布审查"
+  },
+  {
+   "slug": "aist2030-course-outline-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-course-outline-v1",
+   "files": 3,
+   "displayName": "AIST2030 课程大纲生成"
+  },
+  {
+   "slug": "aist2030-post-product-360-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-product-360-v1",
+   "files": 5,
+   "displayName": "AIST2030 产品 360° 环绕视频（Agnes 多角度合成）"
+  },
+  {
+   "slug": "aist2030-dev-offline-pyside6-app-packager-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-dev-offline-pyside6-app-packager-v1",
+   "files": 1,
+   "displayName": "AIST2030 离线PySide6打包器"
+  },
+  {
+   "slug": "aist2030-dev-doc2video-v2",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-dev-doc2video-v2",
+   "files": 35,
+   "displayName": "AIST2030 文案直出视频 v2"
+  },
+  {
+   "slug": "aist2023",
+   "source": "skillhub",
+   "src": "F:\\Work_Buddy\\SKILL工厂\\多通道发布体系\\_skillhub_dl\\aist2023.zip",
+   "files": 6,
+   "displayName": "AIST2030 产品 360° 环绕视频（Agnes 多角度合成）"
+  },
+  {
+   "slug": "aist2030-dev-doc2video-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-dev-doc2video-v1",
+   "files": 13,
+   "displayName": "AIST2030 文案直出视频"
+  },
+  {
+   "slug": "aist2030-pub-skillpay-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-pub-skillpay-v1",
+   "files": 5,
+   "displayName": "AIST2030 付费 Skill 上架发布"
+  },
+  {
+   "slug": "aist2030-dev-doc2video-v2-free",
+   "source": "skillhub",
+   "src": "F:\\Work_Buddy\\SKILL工厂\\多通道发布体系\\_skillhub_dl\\aist2030-dev-doc2video-v2-free.zip",
+   "files": 36,
+   "displayName": "AIST2030 文案直出视频 v2（社区版）"
+  },
+  {
+   "slug": "aist2030-dev-ppt-motion-video-v1-free",
+   "source": "skillhub",
+   "src": "F:\\Work_Buddy\\SKILL工厂\\多通道发布体系\\_skillhub_dl\\aist2030-dev-ppt-motion-video-v1-free.zip",
+   "files": 11,
+   "displayName": "AIST2030 PPT 备注转动画解说视频（语音驱动分镜版·社区版）"
+  },
+  {
+   "slug": "aist2030-gov-skill-audit-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-gov-skill-audit-v1",
+   "files": 2,
+   "displayName": "AIST2030 技能安全审计（双实验室标准）"
+  },
+  {
+   "slug": "aist2030-gov-skill-ledger-v1",
+   "source": "project",
+   "src": "F:\\Work_Buddy\\SKILL工厂\\AIST2030-gov-skill-ledger-v1",
+   "files": 5,
+   "displayName": "AIST2030 Skill 台账建立"
+  },
+  {
+   "slug": "aist2030-mass-camera-prompt-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-mass-camera-prompt-v1",
+   "files": 4,
+   "displayName": "AIST2030 产品运镜提示词生成（50 种特写库）"
+  },
+  {
+   "slug": "aist2030-post-xhs-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-post-xhs-v1",
+   "files": 3,
+   "displayName": "AIST2030 小红书笔记"
+  },
+  {
+   "slug": "aist2030-dev-ppt-motion-video-v1",
+   "source": "install",
+   "src": "C:\\Users\\Administrator\\.workbuddy\\skills\\aist2030-dev-ppt-motion-video-v1",
+   "files": 10,
+   "displayName": "PPT 备注转动画解说视频（语音驱动分镜版）"
+  }
+ ],
+ "missing": []
+}
