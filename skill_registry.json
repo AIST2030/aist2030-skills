@@ -1,0 +1,2086 @@
+{
+ "generatedAt": "2026-10-21 14:53:33",
+ "channels": {
+  "skillhub": {
+   "namespace": "user_28dffbe0",
+   "site": "https://skillhub.cn"
+  },
+  "skillpay": {
+   "merchant": "aist2030",
+   "shelf": "https://skillpay.alipay.com/public/aist2030"
+  },
+  "github": {
+   "owner": "AIST2030",
+   "repo": "aist2030-skills",
+   "site": "https://github.com"
+  },
+  "atomgit": {
+   "owner": "AIST2030",
+   "repo": "aist2030-skills",
+   "site": "https://atomgit.com"
+  }
+ },
+ "stats": {
+  "skillhub": 56,
+  "skillpay": 34,
+  "skillpay_matched": 34,
+  "skillpay_orphan": 0,
+  "github_ready": 56,
+  "atomgit_ready": 0
+ },
+ "skills": [
+  {
+   "slug": "aist2030-modelhub-freemodel",
+   "name": "AIST2030免费模型智能管家",
+   "module": "AI后端",
+   "version": "1.0.0",
+   "description": "一句话在工作台配置免费大模型集合（通义千问/智谱GLM等），自动注册模型、启动本地网关、按提问类型智能调度；基于使用习惯持续调优。输入是自然语言配置指令（如\"帮我配置免费模型\"）；输出是配置结果报告与可用模型清单；边界是不提供付费模型代充、不存储用户Key到云端。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-modelhub-freemodel"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-modelhub-freemodel"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-modelhub-freemodel"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-vmix-product-v1",
+   "name": "产品/商品发布混剪",
+   "module": "内容量产",
+   "version": "1.2.0",
+   "description": "输入：产品实拍/渲染图 + 卖点清单 + 价格权益。输出：横版或竖版成片 MP4 + 可选封面。适用：产品发布会、新品上市、商品介绍、功能演示；不适用：到店服务（用 vmix-local）。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-vmix-product-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-product-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-product-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-product-explain-video-v1",
+   "name": "AIST2030 产品讲解视频（全自动产线）",
+   "module": "内容量产",
+   "version": "2.0.0",
+   "description": "输入：多张多角度产品图（正面/侧面/背面/细节/俯视）+ 产品信息（名称、核心卖点、规格参数、品牌、应用场景）。输出：一段自动讲解的产品视频（AI 运镜展示 + 关键字/金句文字动效 + 配音/数字人 + BGM + 转场 + 片头片尾），附横竖屏多版式。本技能是\"总导演/编排器\"，**第一步先用多模态识别把产品图读懂成 3D 档案，再据此做 AI 运镜**；自身不重复造轮子——规划复用 camera-prompt 的 50 种运镜 + 14 行业库，视觉出片调用 product-360（Agnes）/ product-video（千帆）/ image-awake / HyperFrames ",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-product-explain-video-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-product-explain-video-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-product-explain-video-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-vmix-festival-v1",
+   "name": "节日/大促活动混剪",
+   "module": "内容量产",
+   "version": "1.2.0",
+   "description": "输入：节日氛围素材 + 活动机制 + 爆款价格。输出：竖版/横版成片 MP4 + 可选封面。适用：618/双11、店庆、周年庆、节气营销。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-vmix-festival-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-festival-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-festival-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-vmix-recruit-v1",
+   "name": "招聘/雇主品牌宣传混剪",
+   "module": "内容量产",
+   "version": "1.2.0",
+   "description": "输入：办公环境/团队素材 + 岗位信息 + 福利清单。输出：竖版/横版成片 MP4 + 可选封面。适用：招聘海报视频、雇主品牌、校招宣传。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-vmix-recruit-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-recruit-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-recruit-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-vmix-course-v1",
+   "name": "课程/知识付费宣传混剪",
+   "module": "内容量产",
+   "version": "1.2.0",
+   "description": "输入：课程相关素材 + 痛点文案 + 大纲亮点 + 师资背书。输出：竖版/横版成片 MP4 + 可选封面。适用：训练营、公开课、知识付费推广。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-vmix-course-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-course-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-course-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-vmix-local-v1",
+   "name": "本地生活探店混剪（开业/团购/引流）",
+   "module": "内容量产",
+   "version": "1.2.0",
+   "description": "输入：探店实拍素材（进门/招牌菜/环境）+ 文案要素。输出：竖版 1080×1920 抖音/视频号成片 MP4 + 可选封面。适用：餐饮探店、门店开业、团购推广、到店引流获客；不适用：线上产品（用 vmix-product）。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-vmix-local-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-local-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-local-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-vmix-pro-v1",
+   "name": "综合场景混剪（自动路由 6 大场景）",
+   "module": "内容量产",
+   "version": "1.2.0",
+   "description": "输入：素材 + 一段大白话需求。输出：成片 MP4 + 可选封面。适用：不确定用哪个场景模板时的一站式入口；需求明确时直接用对应单场景 skill 更可控。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-vmix-pro-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-pro-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-pro-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-vmix-event-v1",
+   "name": "活动宣传混剪（演出/电影预告级）",
+   "module": "内容量产",
+   "version": "1.2.0",
+   "description": "输入：本地实拍/海报素材 + 活动信息（名称、奇观亮点、信任背书、票价/场次）。输出：横版 1920×1080 预告片级成片 MP4 + 可选封面。适用：剧目巡演、演唱会、发布会、展会开幕式等强氛围宣传；不适用：日常带货（用 vmix-local / vmix-product）。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-vmix-event-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-event-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-vmix-event-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-chatcut-mcp-v1",
+   "name": "ChatCut-Lite MCP 接入（自定义剪辑引擎）",
+   "module": "开发类",
+   "version": "1.0.0",
+   "description": "输入：无（接入型 skill）。输出：MCP 工具调用指导 + 参数模板 + 故障排查。适用：任何想通过 MCP 调用本地混剪能力的智能体会话；直接在对话里用 vmix-* skill 也可（内部走同一引擎 CLI）。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-chatcut-mcp-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-chatcut-mcp-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-chatcut-mcp-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-course-ppt-revival-v1",
+   "name": "AIST2030 老旧课程 PPT 复活",
+   "module": "",
+   "version": "1.0.0",
+   "description": "输入：原始课程素材，支持 **PPTX / PDF / DOCX / Markdown / 文本 / 图片或图片目录**（非 PPTX 先走 prepare 转成标准 PPTX；PDF 默认只渲染为图、不把识别文字写入页面）；可选行业风格（发布会 / 教育培训 / 金融保险 等 10 类，统一页面视觉与口播基调）、版式偏好（字体 / 主色 / 标题字号）、备注风格（讲师口播 / 精炼要点）、是否保留原有备注。 输出：① 优化后的 PPTX（版式统一、排版改善、每页讲解备注已写入备注栏）；② 按页讲解备注摘要（Markdown / 纯文本）；③ 页面结构化解析报告 page-content.js",
+   "status": "",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-course-ppt-revival-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-course-ppt-revival-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-course-ppt-revival-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-chatcut-lite-v1",
+   "name": "ChatCut-Lite 本地 AI 视频剪辑（零积分）",
+   "module": "开发类",
+   "version": "1.0.0",
+   "description": "输入：一个或多个本地素材（视频 / 音频 / 图片）+ 大白话需求（可选）。 输出：① 成片 MP4（分辨率/时长/体积回显）；② 语音清理报告（原始时长、保留时长、压缩秒数、删除的口头禅逐条列出）；③ ASS 字幕文件；④ 引擎 JSON 工程（可再次微调重渲）；⑤ MG 透明 PNG 序列。 适用边界：只处理本地已有素材，AI 生成视频/图片不在本技能范围（需外部模型额度）；默认输出 1920×1080@30fps，竖版需显式传 --width1080 --height 1920；首次运行 whisper 模型需联网下载（已配置 hf-mirror 镜像），之后完全离线。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-chatcut-lite-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-chatcut-lite-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-chatcut-lite-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-xhs-v2",
+   "name": "AIST2030 小红书笔记",
+   "module": "",
+   "version": "1.0.0",
+   "description": "输入：选题 + 关联知识卡片（title/body/credibility）。输出：可直接配图发布的小红书笔记（title/body/tags/hook），采用人话 + emoji + 清单体。适用边界：只产出小红书单篇笔记，不产出长文或视频脚本；配图需另走 post-image-search-v1。当用户要写小红书笔记、把干货改成小红书口吻时调用。",
+   "status": "",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-xhs-v2"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208836593",
+     "skuId": "S0806000209843883",
+     "title": "AIST2030 小红书笔记",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208836593"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-xhs-v2"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-xhs-v2"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-drama-reedit-v1",
+   "name": "短剧二创剪辑流水线",
+   "module": "内容量产",
+   "version": "1.2.0",
+   "description": "输入：本地短剧/影视素材目录 + 高光时间码清单。输出：竖屏高光混剪成片，含帧级切点吸附、精确拼接、硬字幕、程序化 BGM、字幕-语音同步核验。适用边界：仅处理本地已有素材；二创授权判断由使用者负责。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-drama-reedit-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-drama-reedit-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-drama-reedit-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-mass-ppt-narration-video-v3",
+   "name": "AIST2030 PPT 备注转讲解视频",
+   "module": "",
+   "version": "3.4.0",
+   "description": "输入：本地 PPTX 路径（需每页备注区写好逐字稿），可选音色编号、语速档。 输出：① 成片 MP4（1920×(1080+72 字幕带) / H.264+AAC / 24fps / 44.1kHz，响度 -16 LUFS 标准档）；② 每页时长与字数对照；③ 逐句字幕时间轴（按句硬对齐，零漂移）；④ manifest.json 完整清单；⑤ 11 项质检报告（忠实度、句尾截断、字数守恒、响度、音画等长、字幕无重叠/不越界/不折行/在黑带内、输出存在、成片像素复核）。 适用边界：仅做「备注→成片」的下游合成，不生产 PPT 内容与选题；依赖本机已装 WPS 或 PowerPoint（用于导图）",
+   "status": "",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-mass-ppt-narration-video-v3"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-ppt-narration-video-v3"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-ppt-narration-video-v3"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-image-search-v1",
+   "name": "AIST2030 配图检索",
+   "module": "AI发文",
+   "version": "1.0.0",
+   "description": "输入：文案文本（可含多场景/多段落），可选期望张数、是否强制横版、风格偏好。输出：可直接使用的图片直链列表（每行一个 URL），自带「第 2 张横版」选取规则与合规过滤；全部失败时返回单行【执行失败】。适用边界：仅检索白名单三站（Pixabay 中文 / cc0.cn / aigei 设计图）的免费可商用素材，不下载不落盘也不改图；白名单外的图库一律不访问。当用户要给文章找配图、找可商用高清图、按文案语义搜图时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-image-search-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208834989",
+     "skuId": "S0806000209845309",
+     "title": "AIST2030 配图检索",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208834989"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-image-search-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-image-search-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-mass-renwu-zhi-v1",
+   "name": "AIST2030 人物志 PPT 制作流程",
+   "module": "内容量产",
+   "version": "1.0.0",
+   "description": "输入：人物姓名与基本资料（生平关键节点、四个案例、可核实的核心数据），触发语如「做下一个人物」「人物志PPT」「盘点XX」「做100个人物」。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-mass-renwu-zhi-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208839473",
+     "skuId": "S0806000209841300",
+     "title": "AIST2030 人物志 PPT 制作流程",
+     "price": {
+      "mode": "SUBSCRIPTION",
+      "amount_fen": 75,
+      "currency": "CNY",
+      "interval": "WEEK",
+      "label": "¥0.75/期"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208839473"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-renwu-zhi-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-renwu-zhi-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-kb-card-v1",
+   "name": "AIST2030 知识卡片整理",
+   "module": "知识库整理",
+   "version": "1.0.0",
+   "description": "输入：原始素材文本（零散文档/网页摘录/录音稿/笔记，200–5000 字为宜）。输出：结构化知识卡片列表，每张含 card_id/title/body/category/tags/source/credibility/related，可直接被 kb-tag-v1 或 course-outline-v1 消费。适用边界：只做素材拆解与可信度标注，不臆造引用、不编造数据；无法溯源的一律标「待核实」且 credibility=低。当用户要把零散素材整理成知识卡片、给素材标可信度、提炼可复用知识点时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-kb-card-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208833344",
+     "skuId": "S0806000209831086",
+     "title": "AIST2030 知识卡片整理",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208833344"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-kb-card-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-kb-card-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-zhihu-v1",
+   "name": "AIST2030 知乎专业回答",
+   "module": "AI发文",
+   "version": "1.0.0",
+   "description": "输入：选题（问题式）+ 关联知识卡片（title/body/source/credibility）。输出：可直接发布的知乎回答（headline/body/evidence/closing），结论先行 + 逻辑 + 证据链。适用边界：只产出知乎单条回答，不适配公众号/小红书语态；证据不足时应标待核实，不得补造。当用户要写知乎回答、用结论先行的方式答专业问题时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-zhihu-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208834997",
+     "skuId": "S0806000209845317",
+     "title": "AIST2030 知乎专业回答",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208834997"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-zhihu-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-zhihu-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-tool-weiyun-v1",
+   "name": "AIST2030 腾讯微云集成",
+   "module": "工具类",
+   "version": "1.0.3",
+   "description": "输入：首次安装使用时，需要先完成本地安装和注册，详见 `references/auth.md`。 相关需求或素材。 输出：按本技能流程产出的结果与可交付物。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-tool-weiyun-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208839511",
+     "skuId": "S0806000209841386",
+     "title": "AIST2030 腾讯微云集成",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208839511"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-tool-weiyun-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-tool-weiyun-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-video-search-v1",
+   "name": "AIST2030 视频检索",
+   "module": "AI发文",
+   "version": "1.0.0",
+   "description": "输入：文案文本，可选期望数量、是否强制横屏、分辨率下限、输出根目录。输出：已静音 mp4 的本地路径列表（cache/muted/ 下每行一个），可附来源 URL；全部失败返回单行【执行失败】。适用边界：仅白名单两站（Pixabay 视频 / Mixkit）的免费可商用素材，用浏览器读真实宽高判横屏、分辨率≥720P、取第 2 个并用 ffmpeg 静音，本机需装 ffmpeg。当用户要给文章找横版视频素材、下载并静音素材片段时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-video-search-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208833511",
+     "skuId": "S0806000209842654",
+     "title": "AIST2030 视频检索",
+     "price": {
+      "mode": "SUBSCRIPTION",
+      "amount_fen": 75,
+      "currency": "CNY",
+      "interval": "WEEK",
+      "label": "¥0.75/期"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208833511"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-video-search-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-video-search-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-wechat-review-v1",
+   "name": "AIST2030 微信公众号内容审核",
+   "module": "AI发文",
+   "version": "1.1.0",
+   "description": "输入：公众号/服务号文章草稿（标题/正文/摘要/配图说明/转载来源/原文链接），可选重点检查项或批量模式。输出：结构化审核报告——结论 + 通过项 + 风险项（严重度/条款引用/影响）+ 逐条修改建议。适用边界：对照《微信公众号运营规范把关知识库》做发布前自查，属辅助体检，不替代平台官方审核结果，也不直接代改正文。当用户要在发公众号前做合规自查、查稿件有没有踩红线、判断会不会被限推荐时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-wechat-review-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208836590",
+     "skuId": "S0806000209843880",
+     "title": "AIST2030 微信公众号内容审核",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208836590"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-wechat-review-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-wechat-review-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-media-search-v1",
+   "name": "AIST2030 媒体检索（API 图+视频）",
+   "module": "AI发文",
+   "version": "1.1.0",
+   "description": "输入：文案文本 + media_type（图片|视频，由上游流程传入），可选 aspect/min_width/min_height/max。输出：图片直链或视频 mp4 直链列表（每行一个），视频可按需输出本地静音 mp4 路径，并附北京时间标注头。适用边界：仅调用白名单 Pexels API（api.pexels.com）取免费可商用素材，不访问其他站点、不改素材内容；需自备 Pexels API Key。当用户要给文章配图或配视频素材、走 API 批量取媒体资源时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-media-search-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208834991",
+     "skuId": "S0806000209845311",
+     "title": "AIST2030 媒体检索（API 图+视频）",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208834991"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-media-search-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-media-search-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-mass-matrix-v1",
+   "name": "AIST2030 内容矩阵量产",
+   "module": "内容量产",
+   "version": "1.0.0",
+   "description": "输入：已验证选题 + 模板（来自 post-* 验证稿）+ 变量池（angle/hook/case 列表）+ 目标条数 N。输出：内容矩阵清单（no/platform/angle/hook_var/case_var/title/diff_check），每条可下发给对应 post-* 技能落地成文。适用边界：只做选题分发与差异化编排（角度轮换/变量池化/开头禁重/平台分语），不产出成文正文。当用户要批量排内容矩阵、把一个选题分发到多个平台、防止内容同质化时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-mass-matrix-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208833487",
+     "skuId": "S0806000209842596",
+     "title": "AIST2030 内容矩阵量产",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208833487"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-matrix-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-matrix-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-tool-local-image-text-erase-v1",
+   "name": "AIST2030 本地图片去字",
+   "module": "工具类",
+   "version": "1.0.0",
+   "description": "输入：用户给一张**已经排好版的成品图**（视频封面、海报截帧、带水印的图），只要求去掉上面的文字， 相关需求或素材。 输出：按本技能流程产出的结果与可交付物。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-tool-local-image-text-erase-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208833527",
+     "skuId": "S0806000209842685",
+     "title": "AIST2030 本地图片去字",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 10,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.1"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208833527"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-tool-local-image-text-erase-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-tool-local-image-text-erase-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-pub-poster-canvas-design-v1",
+   "name": "AIST2030 海报画布设计",
+   "module": "发布类",
+   "version": "1.0.0",
+   "description": "输入：- 竖版营销海报 / 活动海报 / 扫码引导图，标准画布 **1080×1920（9:16）**，与设计室产物对齐时用 **1600×2848**",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-pub-poster-canvas-design-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208840488",
+     "skuId": "S0806000209837933",
+     "title": "AIST2030 海报画布设计",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 10,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.1"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208840488"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-pub-poster-canvas-design-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-pub-poster-canvas-design-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-product-video-v1",
+   "name": "AIST2030 产品视频生成（文心+千帆）",
+   "module": "AI发文",
+   "version": "1.0.0",
+   "description": "输入：触发短语「生成一个[运镜]的[产品]视频」+ 1–5 张产品图（也可只给产品名，走产品知识库取素材）。输出：产品短视频直链（默认 1080P/8s）+ 封面图 + 所用运镜与参数回显，全失败返回单行【执行失败】。适用边界：经文心 ERNIE X1 生成中文分镜、百度千帆出片，需配置对应 API 凭据，凭据缺失时不可用；不负责后期剪辑与字幕。当用户要用产品图生成带运镜的商业短视频、做产品主图视频时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-product-video-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208839488",
+     "skuId": "S0806000209841327",
+     "title": "AIST2030 产品视频生成（文心+千帆）",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208839488"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-product-video-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-product-video-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-mass-industry-sop-producer-v1",
+   "name": "行业获客 SOP 生产流水线",
+   "module": "内容量产",
+   "version": "1.0.0",
+   "description": "输入：行业名称（如餐饮、美业、汽修）与目标商家画像，触发语如「做第X个行业」「出个行业获客方案」「继续做行业SOP」「XX行业怎么做」。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-mass-industry-sop-producer-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208834938",
+     "skuId": "S0806000209833526",
+     "title": "行业获客 SOP 生产流水线",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208834938"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-industry-sop-producer-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-industry-sop-producer-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-gov-skill-standard-v1",
+   "name": "AIST2030 技能搭建标准",
+   "module": "治理审查",
+   "version": "1.0.0",
+   "description": "输入：技能需求描述（文字）或技能草稿文件（含 SKILL.md，可附 references/ 与 assets/）。输出：搭建标准说明（14 必填字段规格 + AIST2030 命名规范 + 内外双门禁 + 防同质化红线）与该草稿的逐项验收清单。适用边界：只给标准与验收结论，不代写完整技能正文；安全类复核需另走 gov-skill-audit-v1。当用户问「技能怎么搭」「14 个必填字段是哪些」「命名规范是什么」「这份草稿过没过门禁」时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-gov-skill-standard-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208833342",
+     "skuId": "S0806000209831084",
+     "title": "AIST2030 技能搭建标准",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208833342"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-gov-skill-standard-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-gov-skill-standard-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-windows-ai-exe-toolkit-v1",
+   "name": "AIST2030 Windows AI工具箱",
+   "module": "开发类",
+   "version": "1.0.0",
+   "description": "输入：来源：ai-matting-live（无绿幕抠像直播工具）实战。全流程踩坑已验证，照抄即可。 相关需求或素材。 输出：按本技能流程产出的结果与可交付物。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-windows-ai-exe-toolkit-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208834936",
+     "skuId": "S0806000209833524",
+     "title": "AIST2030 Windows AI工具箱",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208834936"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-windows-ai-exe-toolkit-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-windows-ai-exe-toolkit-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-wechat-v1",
+   "name": "AIST2030 公众号长文",
+   "module": "AI发文",
+   "version": "1.0.0",
+   "description": "输入：选题 + 关联知识卡片（title/body/source/credibility）。输出：可排版发布的公众号长文（title/lead/sections/quote/ending），有深度有条理适合转发。适用边界：只产出公众号文风的长文，不适配小红书/知乎等平台语态，也不替代配图检索与合规审核。当用户要写公众号文章、把素材写成深度长文时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-wechat-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208833515",
+     "skuId": "S0806000209842662",
+     "title": "AIST2030 公众号长文",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208833515"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-wechat-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-wechat-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-image-search-cc0-v1",
+   "name": "AIST2030 合规配图检索（cc0 单站版）",
+   "module": "AI发文",
+   "version": "1.0.0",
+   "description": "输入：文案长句（自动用 jieba TextRank 提炼 3–8 个中文关键词）或已提炼的关键词列表。输出：cc0.cn 上与关键词匹配度最高的第一张高清原图直链（仅一行 URL）；全程无合格图则返回【执行失败】。适用边界：仅访问白名单 cc0.cn 及其同站 CDN img.cc0.cn，下载与过敏只在内存中做合规校验、绝不落盘或改图，最终只输出链接；多站点联合检索请改用 post-image-search-v1。当用户要用 cc0.cn 搜合规配图、取第一张匹配原图直链时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-image-search-cc0-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208833494",
+     "skuId": "S0806000209842611",
+     "title": "AIST2030 合规配图检索（cc0 单站版）",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208833494"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-image-search-cc0-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-image-search-cc0-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-windows-local-media-pipeline-v1",
+   "name": "AIST2030 本地媒体处理流水线",
+   "module": "开发类",
+   "version": "1.0.0",
+   "description": "输入：所有结论均在 Windows + Python 3.13 + Pillow 12 + numpy 2 环境实跑验证（2026-09）。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-windows-local-media-pipeline-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208830836",
+     "skuId": "S0806000209837929",
+     "title": "AIST2030 本地媒体处理流水线",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208830836"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-windows-local-media-pipeline-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-windows-local-media-pipeline-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-mass-image-awake-v1",
+   "name": "AIST2030 图片唤醒工具",
+   "module": "内容量产",
+   "version": "1.0.0",
+   "description": "输入：单张或多张图片（可选产品名称、场景说明），用户希望图片“动起来”但不会描述动效。 输出：① 按商业优先级（0 兜底→1 商品产品→2",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-mass-image-awake-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208836529",
+     "skuId": "S0806000209831958",
+     "title": "AIST2030 图片唤醒工具",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208836529"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-image-awake-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-image-awake-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-ppt-narration-video-v2",
+   "name": "PPT 备注转讲解视频（通用版 v2）",
+   "module": "开发类",
+   "version": "2.0.0",
+   "description": "输入：飞书在线幻灯片 URL（含 /slides/）或本地 PPTX 路径及其每页备注讲稿，可选音色编号、语速档、音量档、分辨率、BGM",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-ppt-narration-video-v2"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208834935",
+     "skuId": "S0806000209833523",
+     "title": "PPT 备注转讲解视频（通用版 v2）",
+     "price": {
+      "mode": "SUBSCRIPTION",
+      "amount_fen": 75,
+      "currency": "CNY",
+      "interval": "WEEK",
+      "label": "¥0.75/期"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208834935"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-ppt-narration-video-v2"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-ppt-narration-video-v2"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-pyside6-desktop-app-iteration-v1",
+   "name": "AIST2030 PySide6桌面应用迭代",
+   "module": "开发类",
+   "version": "1.0.0",
+   "description": "输入：适用场景：用户反馈 GUI 主题/菜单/功能入口/授权一致性等问题，需要修改源码、重新打包、交付 docs。 相关需求或素材。 输出：按本技能流程产出的结果与可交付物。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-pyside6-desktop-app-iteration-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208836528",
+     "skuId": "S0806000209831957",
+     "title": "AIST2030 PySide6桌面应用迭代",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208836528"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-pyside6-desktop-app-iteration-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-pyside6-desktop-app-iteration-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-ai-paid-backend-v1",
+   "name": "AIST2030 AI付费后端接入",
+   "module": "AI后端",
+   "version": "1.0.0",
+   "description": "输入：适用：任何前端工具想接\"付费才用真AI\"，且不想让前端持有大模型密钥、要防绕过。 相关需求或素材。 输出：按本技能流程产出的结果与可交付物。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-ai-paid-backend-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208829695",
+     "skuId": "S0806000209829070",
+     "title": "AIST2030 AI付费后端接入",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208829695"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-ai-paid-backend-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-ai-paid-backend-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-toutiao-draft-v1",
+   "name": "AIST2030 头条草稿箱批量发布",
+   "module": "AI发文",
+   "version": "1.0.0",
+   "description": "输入：你本人 mp.toutiao.com 草稿箱中已存在的文章（不生产任何新内容）+ 运行参数（AUTH_STATE=auth.json、STATE_FILE=state.json、SLOT_PLAN 高峰时段配额）。输出：逐条发布执行结果与持久化状态文件（state.json 的 published 列表 / paused 标志、notify.log），可作为次日定时重跑的续跑依据与运营对账凭证。适用边界：只发布草稿箱里已有的草稿，不生成也不修改文章内容；带去重/只读/重试三重保护，受平台配额与登录态限制。当用户要一键批量发头条草稿箱、按高峰时段配额发布头条文章、做定时重跑发布时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-toutiao-draft-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208839492",
+     "skuId": "S0806000209841335",
+     "title": "AIST2030 头条草稿箱批量发布",
+     "price": {
+      "mode": "SUBSCRIPTION",
+      "amount_fen": 75,
+      "currency": "CNY",
+      "interval": "WEEK",
+      "label": "¥0.75/期"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208839492"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-toutiao-draft-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-toutiao-draft-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-course-script-v1",
+   "name": "AIST2030 逐字稿与PPT脚本",
+   "module": "课程资料产出",
+   "version": "1.0.0",
+   "description": "输入：course-outline-v1 产出的课程大纲（modules→lessons，含 source_cards）。输出：每节课的口语化逐字稿（verbatim）、PPT 脚本（ppt_script）与随堂测验（quiz），可直接用于录课与课后测验。适用边界：只在大纲定稿后扩写正文，不重排课程结构，也不替代人工试讲与事实校准。当用户要把课程大纲扩写成逐字稿、写 PPT 讲稿、配随堂测验题时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-course-script-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208836526",
+     "skuId": "S0806000209831955",
+     "title": "AIST2030 逐字稿与PPT脚本",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208836526"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-course-script-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-course-script-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-tool-link-image-fetch-v3",
+   "name": "AIST2030 链接批量取图",
+   "module": "工具类",
+   "version": "3.0.0",
+   "description": "输入：通过网页分享链接，**批量**提取对话/帖子/文章里的图片，并尽量拿到**原图**： 相关需求或素材。 输出：按本技能流程产出的结果与可交付物。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-tool-link-image-fetch-v3"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208839508",
+     "skuId": "S0806000209841377",
+     "title": "AIST2030 链接批量取图",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 10,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.1"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208839508"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-tool-link-image-fetch-v3"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-tool-link-image-fetch-v3"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-kb-tag-v1",
+   "name": "AIST2030 知识检索标注",
+   "module": "知识库整理",
+   "version": "1.0.0",
+   "description": "输入：kb-card-v1 产出的卡片列表（card_id/title/body/tags/category）。输出：标注列表，每张含 card_id/title/index_terms/taxonomy/difficulty/usage_hint，可直接被 course-outline-v1 与 post-* 技能检索消费。适用边界：只做标签与索引增强，不改写卡片正文；没有上游卡片时应先走 kb-card-v1。当用户要给知识卡片打多维标签、建检索索引、划分难度层级时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-kb-tag-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208834937",
+     "skuId": "S0806000209833525",
+     "title": "AIST2030 知识检索标注",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208834937"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-kb-tag-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-kb-tag-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-gov-skill-review-v1",
+   "name": "AIST2030 技能发布审查",
+   "module": "治理审查",
+   "version": "1.0.0",
+   "description": "输入：待发布 skill 文件夹（SKILL.md，可附 references/ 与 assets/）。输出：发布审查报告（内部门禁 + 外部门禁逐项结论、缺失字段定位、修改建议）与可直接上架的上架资料包。适用边界：只做规范对照与文本层补全建议；不代调用 SkillHub 发布接口，也不改写被审技能的运行时代码。当用户要在发 SkillHub 前做发布审查、查一项 skill 还差哪些字段、生成上架资料时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-gov-skill-review-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208833340",
+     "skuId": "S0806000209831080",
+     "title": "AIST2030 技能发布审查",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208833340"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-gov-skill-review-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-gov-skill-review-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-course-outline-v1",
+   "name": "AIST2030 课程大纲生成",
+   "module": "课程资料产出",
+   "version": "1.0.0",
+   "description": "输入：kb-tag-v1 标注后的知识卡片集合（card_id/title/body/taxonomy/difficulty）。输出：课程大纲（course_title/audience/learning_goals/modules），modules 内的 lessons 带 source_cards 溯源，可直接喂给 course-script-v1 扩写。适用边界：只做大纲与学习目标编排，不写逐字稿正文；卡片缺失或不可溯源时应先回 kb-card-v1 补齐。当用户要把知识卡片整理成课程大纲、设计课程目录与学习路径、编排章节先后顺序时调用。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-course-outline-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208829696",
+     "skuId": "S0806000209829071",
+     "title": "AIST2030 课程大纲生成",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208829696"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-course-outline-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-course-outline-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-product-360-v1",
+   "name": "AIST2030 产品 360° 环绕视频（Agnes 多角度合成）",
+   "module": "AI发文",
+   "version": "1.0.0",
+   "description": "输入：用户拖入的 2–3 张不同角度产品图 + 触发短语「生成一个[产品]的360视频」（或带运镜）。输出：一段 360° 环绕展示视频直链（mp4），附产品分类/运镜/帧数/帧率回显。适用边界：仅",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-product-360-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208839483",
+     "skuId": "S0806000209841316",
+     "title": "AIST2030 产品 360° 环绕视频（Agnes 多角度合成）",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 99,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.99"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208839483"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-product-360-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-product-360-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-offline-pyside6-app-packager-v1",
+   "name": "AIST2030 离线PySide6打包器",
+   "module": "开发类",
+   "version": "1.0.0",
+   "description": "输入：- 用户要开发**纯本地离线**的 Windows 桌面工具（如 PDF/图片/文档处理工具箱）。 相关需求或素材。 输出：按本技能流程产出的结果与可交付物。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-offline-pyside6-app-packager-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208836527",
+     "skuId": "S0806000209831956",
+     "title": "AIST2030 离线PySide6打包器",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208836527"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-offline-pyside6-app-packager-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-offline-pyside6-app-packager-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-doc2video-v2",
+   "name": "AIST2030 文案直出视频 v2",
+   "module": "开发类",
+   "version": "2.1.0",
+   "description": "输入：一段口播文案（纯文本）与可选规格。输出：一条可发布的竖版故事成片视频",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-doc2video-v2"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-doc2video-v2"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-doc2video-v2"
+    }
+   }
+  },
+  {
+   "slug": "aist2023",
+   "name": "AIST2030-post-product-360-v1",
+   "module": "",
+   "version": "1.0.0",
+   "description": "输入：用户拖入的 2–3 张不同角度产品图 + 触发短语「生成一个[产品]的360视频」（或带运镜）。输出：一段 360° 环绕展示视频直链（mp4），附产品分类/运镜/帧数/帧率回显。适用边界：仅",
+   "status": "",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2023"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2023"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2023"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-doc2video-v1",
+   "name": "AIST2030 文案直出视频",
+   "module": "开发类",
+   "version": "1.2.0",
+   "description": "输入：一段口播文案（如产品盘点、知识科普、观点输出），可选成片规格。",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-doc2video-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-doc2video-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-doc2video-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-pub-skillpay-v1",
+   "name": "AIST2030 付费 Skill 上架发布",
+   "module": "发布类",
+   "version": "1.0.0",
+   "description": "输入：一个待发布的 Skill 文件夹（含 SKILL.md，可附 references/ 与 assets/），或「我要把这个 Skill 卖出去 / 上架 SkillPay / 定多少钱」这类需求描述。输出：① 计费模式建议（买断 / 订阅 / 免费 + 建议价位与理由）② 可直接复制填写的上架备料表（Slug、显示名、图标、版本号、变更说明、3 个效果案例、补充材料清单）③ 发布前门禁勾选清单（文件结构 / 体积 / 字段 / 签约 / 资质）④ 支付与交付兜底方案（Agent 支付失败转网页支付、云端保护口径）⑤ 上架后经营动作清单。适用边界：只做上架准备与合规自检、不代替用户实际提交",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-pub-skillpay-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208839505",
+     "skuId": "S0806000209841370",
+     "title": "AIST2030 付费 Skill 上架发布",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 10,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.1"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208839505"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-pub-skillpay-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-pub-skillpay-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-doc2video-v2-free",
+   "name": "AIST2030 文案直出视频 v2（社区版）",
+   "module": "开发类",
+   "version": "2.1.0",
+   "description": "输入：一段口播文案（纯文本）与可选规格。输出：一条可发布的竖版故事成片视频",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-doc2video-v2-free"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-doc2video-v2-free"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-doc2video-v2-free"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-ppt-motion-video-v1-free",
+   "name": "PPT 备注转动画解说视频（语音驱动分镜版·社区版）",
+   "module": "",
+   "version": "1.2.0",
+   "description": "输入：本地 PPTX（或飞书幻灯片 URL）及其备注区口播逐字稿，可选音色（默认温暖女声，可换新闻男声等）、语速、品牌色/分辨率、字幕三态（外扩窄带/叠底/关闭）与三档字号、是否加 BGM。输出：① 动画解说视频 MP4（元素跟随语音入场 + 词级高亮字幕）；② 词级时间轴 timeline.json（可复用资产）；③ 分镜触发表（哪个元素挂在哪句话的哪个词上）；④ 自检报告（忠实度、词对齐率、字幕单行、响度、音画同步）；⑤ 可复用场景模板代码。适用边界：本技能做「备注→动画成片」的下游合成，不生产 PPT 内容与选题；需要本机具备 Node 运行时与 Chrome（用于 Remotion 渲",
+   "status": "",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-ppt-motion-video-v1-free"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-ppt-motion-video-v1-free"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-ppt-motion-video-v1-free"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-gov-skill-audit-v1",
+   "name": "AIST2030 技能安全审计（双实验室标准）",
+   "module": "治理审查",
+   "version": "1.0.0",
+   "description": "",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "aist2030",
+     "url": "https://skillhub.cn/skills/aist2030/aist2030-gov-skill-audit-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208837764",
+     "skuId": "S0806000209839591",
+     "title": "AIST2030 技能安全审计（双实验室标准）",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208837764"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-gov-skill-audit-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-gov-skill-audit-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-gov-skill-ledger-v1",
+   "name": "AIST2030 Skill 台账建立",
+   "module": "治理审查",
+   "version": "1.0.0",
+   "description": "",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-gov-skill-ledger-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-gov-skill-ledger-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-gov-skill-ledger-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-mass-camera-prompt-v1",
+   "name": "AIST2030 产品运镜提示词生成（50 种特写库）",
+   "module": "内容量产",
+   "version": "1.0.0",
+   "description": "",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "aist2030",
+     "url": "https://skillhub.cn/skills/aist2030/aist2030-mass-camera-prompt-v1"
+    },
+    "skillpay": {
+     "ready": true,
+     "productId": "P0806000208829704",
+     "skuId": "S0806000209829089",
+     "title": "AIST2030 产品运镜提示词生成（50 种特写库）",
+     "price": {
+      "mode": "ONE_TIME",
+      "amount_fen": 1,
+      "currency": "CNY",
+      "interval": null,
+      "label": "¥0.01"
+     },
+     "url": "https://skillpay.alipay.com/shelf/product?productId=P0806000208829704"
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-camera-prompt-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-mass-camera-prompt-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-post-xhs-v1",
+   "name": "AIST2030 小红书笔记",
+   "module": "AI发文",
+   "version": "1.0.0",
+   "description": "",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-post-xhs-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-post-xhs-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-post-xhs-v1"
+    }
+   }
+  },
+  {
+   "slug": "aist2030-dev-ppt-motion-video-v1",
+   "name": "AIST2030 PPT 备注转动画解说视频（语音驱动分镜版）",
+   "module": "开发类",
+   "version": "1.0.0",
+   "description": "",
+   "status": "已上架",
+   "channels": {
+    "skillhub": {
+     "ready": true,
+     "namespace": "user_28dffbe0",
+     "url": "https://skillhub.cn/skills/user_28dffbe0/aist2030-dev-ppt-motion-video-v1"
+    },
+    "skillpay": {
+     "ready": false,
+     "productId": null,
+     "skuId": null,
+     "title": null,
+     "price": null,
+     "url": null
+    },
+    "github": {
+     "ready": true,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://github.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-ppt-motion-video-v1"
+    },
+    "atomgit": {
+     "ready": false,
+     "repo": "AIST2030/aist2030-skills",
+     "url": "https://atomgit.com/AIST2030/aist2030-skills/tree/main/aist2030-dev-ppt-motion-video-v1"
+    }
+   }
+  }
+ ],
+ "skillpay_orphans": []
+}
