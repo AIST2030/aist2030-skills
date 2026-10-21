@@ -1,0 +1,46 @@
+{
+  "_说明": "填空式配置：改 pptx 路径 + 逐页填 units（分句），units 拼接后必须与 PPT 备注逐字一致。",
+  "_音色建议": "播客/知识女声 zh-CN-XiaoxiaoNeural(rate +25% / pitch -8Hz)；沉稳男讲师 zh-CN-YunxiNeural(rate +0% / pitch -2Hz)",
+  "pptx": "E:/视频创作/示例/某课程.pptx",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "rate": "+25%",
+  "pitch": "-8Hz",
+  "fps": 30,
+  "width": 1080,
+  "height": 1440,
+  "sentGap": 0.32,
+  "pageGap": 0.6,
+  "pages": {
+    "1": {
+      "scene": "Cover",
+      "title": "封面",
+      "units": [
+        "各位老板，各位伙伴，大家好。",
+        "这一期我们完整拆解微信原生AI助手小微的最新进展。"
+      ]
+    },
+    "2": {
+      "scene": "Steps",
+      "title": "本节导读",
+      "units": [
+        "这一节分五步走：",
+        "第一步讲最新进展和技术底座；",
+        "第二步按九个场景逐个拆解二十八个入口。"
+      ]
+    },
+    "3": {
+      "scene": "List",
+      "title": "场景二 · 聊天",
+      "units": [
+        "场景二，聊天场景五个入口。",
+        "第一个，输入框点加号里的问小微，群聊九九九加未读也能一键总结；",
+        "第二个，长按聊天里的文字，可以直接让小微解读。"
+      ]
+    }
+  },
+  "_字幕三态": "subtitles+bandHeight>0 = 外扩窄带（height 含带高，如 1080 画面 + 72 带）；bandHeight=0 = 叠底；subtitles=false = 无字幕",
+  "_字号三档": "captionSize: small/medium/large，按带高（或画布高 6.5%）比例换算 captionFontSize",
+  "subtitles": true,
+  "bandHeight": 72,
+  "captionSize": "medium"
+}
