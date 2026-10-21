@@ -1,0 +1,12 @@
+# 老旧课程 PPT 复活 · 依赖清单
+# 安装：python -m pip install -r scripts/requirements.txt
+#
+# 核心：analyze / apply / qc 三个脚本只需要 python-pptx。
+# prepare.py 的多格式输入按格式按需安装可选依赖（缺失时脚本会优雅退出并提示装哪个）：
+#   - PDF 转 PPTX      → pymupdf        （pip install pymupdf）
+#   - DOCX 转 PPTX     → python-docx    （pip install python-docx）
+#   - 图片 / 图片目录  → 无需额外依赖（python-pptx 自带图片插入）
+# 若要把备注继续做成讲解视频，请另装下游技能 AIST2030-mass-ppt-narration-video-v3 的依赖
+# （edge-tts / jieba / comtypes / numpy / imageio-ffmpeg）。
+
+python-pptx
